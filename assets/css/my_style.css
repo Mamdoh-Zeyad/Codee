@@ -1,0 +1,21 @@
+/* Start Global Rules */
+body, html{
+	height: 100%;
+	margin: 0px;
+	
+}
+
+#my_wrapper{
+	position: relative;
+	min-height:100%;
+	background-color: #fbfbfb;
+	text-align: center;
+}
+
+#my_container{
+	margin: 0 auto;
+	min-height: 100%;
+	width: 100%;
+	padding-bottom:  40px;
+}
+/* End Global Rules */
