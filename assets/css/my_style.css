@@ -1,8 +1,30 @@
+/*
+	Project Info:
+		- Project Name: Codee 
+    	- Team Members: Mamdoh Zeyad - Ahmed sabagh
+		- Subject: Senior Project II 
+*/
+
+/* Start Imports*/
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+/* End Imports*/
+
+/* Start Root */
+:root{
+	--darkgreen-color: #313631;
+	--blue-color:#0ed4a0;
+	--yellow-color: #d3f105;
+  	
+	--cairo-font-family: 'Cairo', sans-serif;
+
+	--box-shadw: 0px 4px 6px 0px #0c002e0f;
+}
+/* End Root */
+
 /* Start Global Rules */
 body, html{
 	height: 100%;
 	margin: 0px;
-	
 }
 
 #my_wrapper{
@@ -17,5 +39,51 @@ body, html{
 	min-height: 100%;
 	width: 100%;
 	padding-bottom:  40px;
+	font-family: var(--cairo-font-family);
 }
 /* End Global Rules */
+
+/* Start Home Page Header */
+.my_navbar{
+	background-color: var(--darkgreen-color);
+	color: white;
+}
+.my_logo{
+	width: 200px;
+}
+.my_btn1{
+	padding: 5px 20px 5px 20px;
+    border: 1px solid var(--blue-color);
+    border-radius: 10px;
+    
+    box-shadow: 2px 2px 9px var(--blue-color);
+	font-weight: bold;
+}
+.my_btn1:hover{
+	background-color: var(--yellow-color);
+	box-shadow: 2px 2px 9px var(--yellow-color);
+	transition: 1s;
+}
+.my_btn1 a{
+	text-decoration: none;
+	color: var(--blue-color);
+}
+.my_btn1 a:hover{
+	text-decoration: none;
+	color: var(--blue-color);
+}
+/* End Home Page Header */
+
+/* Start Home Page Footer */
+.home_footer{
+	background-color: var(--darkgreen-color);
+	color: white;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+	margin-top: 50px;
+	padding-top: 20px;
+}
+/* End Home Page Footer */
+
