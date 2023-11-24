@@ -14,20 +14,23 @@
 	--darkgreen-color: #313631;
 	--blue-color:#0ed4a0;
 	--yellow-color: #d3f105;
-  	
 	--cairo-font-family: 'Cairo', sans-serif;
-
 	--box-shadw: 0px 4px 6px 0px #0c002e0f;
 }
 /* End Root */
 
 /* Start Global Rules */
-body, html{
-	height: 100%;
-	margin: 0px;
+*{
+	font-family: var(--cairo-font-family);
 }
-
-#my_wrapper{
+body, html{
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+/* 
+#my_wrpper{
 	position: relative;
 	min-height:100%;
 	background-color: #fbfbfb;
@@ -40,7 +43,7 @@ body, html{
 	width: 100%;
 	padding-bottom:  40px;
 	font-family: var(--cairo-font-family);
-}
+} */
 /* End Global Rules */
 
 /* Start Home Page Header */
@@ -53,9 +56,10 @@ body, html{
 }
 .my_btn1{
 	padding: 5px 20px 5px 20px;
+	margin-right: 5px;
+    margin-left: 5px;
     border: 1px solid var(--blue-color);
     border-radius: 10px;
-    
     box-shadow: 2px 2px 9px var(--blue-color);
 	font-weight: bold;
 }
@@ -76,14 +80,47 @@ body, html{
 
 /* Start Home Page Footer */
 .home_footer{
-	background-color: var(--darkgreen-color);
-	color: white;
 	position: absolute;
-	bottom: 0;
-	width: 100%;
+    /* bottom: 0; */
+    left: 0;
+    right: 0;
+    background: var(--darkgreen-color);
+    height: auto;
+    width: 100%;
+    padding-top: 20px;
 	text-align: center;
-	margin-top: 50px;
-	padding-top: 20px;
+    color: #fff;
 }
+
 /* End Home Page Footer */
 
+/* Start Signup Page */
+.signup_text_side{
+	background-color: var(--darkgreen-color);
+	text-align: center;
+}
+.signup_text_side_logo{
+	width: 90%;
+}
+.my_header_font{
+	color: var(--blue-color);
+    font-size: xx-large;
+    font-weight: 700;
+}
+.red_star{
+	color: red;
+}
+/* End Singup Page */
+
+/* Start Login Page */
+.forget_password_div{
+	padding-top: 6px;
+}
+.forget_password{
+	text-decoration: none;
+	color: var(--blue-color);
+}
+.forget_password:hover{
+	color: var(--yellow-color);
+}
+/* End Login Page */

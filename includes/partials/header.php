@@ -18,5 +18,3 @@
     <link rel="stylesheet" href="../assets/fonts/fontawesome/css/solid.css"/>
 </head>
 <body>
-    <div id="my_wrpper">
-        <div id="my_container">
