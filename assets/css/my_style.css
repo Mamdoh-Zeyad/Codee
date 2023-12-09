@@ -13,6 +13,7 @@
 :root{
 	--darkgreen-color: #313631;
 	--blue-color:#0ed4a0;
+	--backGroundColor:#F9F9FE;
 	--yellow-color: #d3f105;
 	--cairo-font-family: 'Cairo', sans-serif;
 	--box-shadw: 0px 4px 6px 0px #0c002e0f;
@@ -77,6 +78,68 @@ body, html{
 	color: var(--blue-color);
 }
 /* End Home Page Header */
+
+/* Start Home Page  */
+.slider-text {
+    color: #333;
+}
+
+/* .my_sliderBackGround{
+	background-color:#434141;
+} */
+
+.About{
+	background-color:var(--backGroundColor);
+}
+
+.space_section{
+	margin: 45px;
+}
+
+.my_hr{
+	color: green;
+	width: 150px;
+	border: 2px #FC5C7D solid;
+}
+
+.my_figure{
+	background-color: var(--darkgreen-color);
+	color:var(--blue-color);
+	font-weight: bold
+}
+
+.my_text{
+	color: var(--blue-color);
+}
+
+.my_IconeColor{
+	color: var(--yellow-color);
+}
+
+.my_IconeColor2{
+color: var(--blue-color);
+}
+
+.my_textCardColor{
+	color:#260979;
+}
+
+.my_numberInsideCard{
+	width: 50px; 
+	background-color:var(--yellow-color);
+	border: 2px var(--yellow-color) solid;
+	border-radius: 10px;
+	text-align: center;
+}
+
+.my_numberInsideCard2{
+	width: 50px; 
+	background-color:var(--blue-color);
+	border: 2px var(--blue-color) solid;
+	border-radius: 10px;
+	text-align: center;
+}
+ /* End Home Page  */
 
 /* Start Home Page Footer */
 .home_footer{
