@@ -139,6 +139,18 @@ color: var(--blue-color);
 	border-radius: 10px;
 	text-align: center;
 }
+
+.my_nav :hover{
+	
+	box-shadow: 2px 2px 9px var(--yellow-color);
+	transition: 1s;
+}
+
+/* .my_nav a:hover{
+	text-decoration: none;
+	color: var(--blue-color);
+} */
+
  /* End Home Page  */
 
 /* Start Home Page Footer */
