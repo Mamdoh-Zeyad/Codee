@@ -1,7 +1,8 @@
 <!--Request Header-->
 <?php
-require_once('../includes/partials/header.php')
+    require_once('../includes/partials/header.php')
 ?>
+
 <div class="login_container h-100">
     <div class="container-fluid h-100">
         <div class="row justify-content-between h-100">
@@ -10,17 +11,23 @@ require_once('../includes/partials/header.php')
             </div>
             <div class="col-xl-2 p-3"></div>
             <div class="col-xl-4 p-3 d-flex align-items-center justify-content-center">
-                <form class="row g-3 needs-validation" novalidate>
+                <form class="row g-3 needs-validation" method="post" action="../controllers/login_controller.php" novalidate>
+                    <?php 
+                        if (isset($_GET['error'])) { ?>
+                        <p class="login_error">
+                            <?php echo $_GET['error']; ?>
+                        </p>
+                    <?php } ?>
                     <div class="form_header">
                         <p class="my_header_font">Login To Your Account.</p>
                     </div>
                     <div class="col-md-12">
-                        <label for="validationCustom01" class="form-label">Email<span class="red_star">*</span></label>
-                        <input type="email" class="form-control" id="validationCustom01" placeholder="example@domain.com" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" required>
+                        <label for="validationCustom01" class="form-label">Username<span class="red_star">*</span></label>
+                        <input type="text" class="form-control" id="validationCustom01"  id="username" name="username">
                     </div>
                     <div class="col-md-12">
                         <label for="validationCustom03" class="form-label">Password<span class="red_star">*</span></label>
-                        <input type="password" class="form-control" id="validationCustom03" placeholder="Admin@123456" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$" required>
+                        <input type="password" class="form-control" id="validationCustom03" id="password" name="password">
                     </div>
                     <div class="col-3">
                         <button class="my_btn1" type="submit">Login</button>
@@ -29,9 +36,7 @@ require_once('../includes/partials/header.php')
                         <div class="forget_password_div">
                             <a class="forget_password" href="">Forget Password?</a>
                         </div>
-                        
                     </div>
-                    
                 </form>
             </div>
             <div class="col-xl-2 p-3"></div>
@@ -39,6 +44,10 @@ require_once('../includes/partials/header.php')
     </div>
 </div>
 
+<!-- Scripts File -->
+<script type="text/javascript" src="../assets/js/login.js"></script>
+
+<!--Request Footer-->
 <?php
-require_once('../includes/partials/footer.php')
+    require_once('../includes/partials/footer.php')
 ?>

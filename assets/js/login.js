@@ -1,4 +1,3 @@
-// Scripts for sign up form
 console.log("Hello");
 (() => {
     'use strict'
@@ -17,4 +16,4 @@ console.log("Hello");
         form.classList.add('was-validated')
       }, false)
     })
-  })()
+})()
