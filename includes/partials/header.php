@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="../assets/fonts/fontawesome/css/fontawesome.css"/>
     <link rel="stylesheet" href="../assets/fonts/fontawesome/css/brands.css"/>
     <link rel="stylesheet" href="../assets/fonts/fontawesome/css/solid.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     <!-- Scripts Files -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
