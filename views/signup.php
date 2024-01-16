@@ -7,7 +7,7 @@
     <div class="container-fluid h-100">
         <div class="row justify-content-between h-100">
             <div class="col-xl-4 p-3 signup_text_side d-flex align-items-center justify-content-center">
-                <img class="signup_text_side_logo" src="../assets/img/codee-logo.png" alt="codee icon">
+                <a href="home.php"><img class="signup_text_side_logo" src="../assets/img/codee-logo.png" alt="codee icon"></a> 
             </div>
             <div class="col-xl-2 p-3"></div>
             <div class="col-xl-4 p-3 d-flex align-items-center justify-content-center">
@@ -17,7 +17,7 @@
                     </div>
                     <div class="col-md-6">
                         <label for="validationCustom01" class="form-label">First Name<span class="red_star">*</span></label>
-                        <input type="text" class="form-control" id="validationCustom01" placeholder="" pattern="[a-zA-Z]+" name="first_name" required>
+                        <input type="text" class="form-control" id="validationCustom01" placeholder="" pattern="[a-zA-Z]+" name="first_name">
                     </div>
                     <div class="col-md-6">
                         <label for="validationCustom02" class="form-label">Last Name<span class="red_star">*</span></label>
@@ -36,21 +36,18 @@
                     <div class="col-md-6">
                         <label for="validationCustom01" class="form-label">Email<span class="red_star">*</span></label>
                         <input type="email" class="form-control" id="validationCustom01" placeholder="example@domain.com" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" name="email" id="email" required>
-                        <span id="emailError"></span>
+                        <div class="invalid-feedback" id="emailError"></div>
                     </div>
                     <div class="col-md-6">
-                        <label for="validationCustom01" class="form-label">Phone Number<span class="red_star">*</span></label>
-                        <div class="input-group has-validation">
-                        <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" placeholder="" name="phone_number" required>
-                        </div>
+                        <label for="validationCustom02" class="form-label">Phone Number<span class="red_star">*</span></label>
+                        <input type="text" class="form-control" id="validationCustom02" name="phone_number" required>
                     </div>
                     <div class="col-md-6">
                         <label for="validationCustomUsername" class="form-label">Username<span class="red_star">*</span></label>
                         <div class="input-group has-validation">
                         <span class="input-group-text" id="inputGroupPrepend">@</span>
                         <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" placeholder="" pattern="^[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)*$" name="username" id="username" required>
-                        <span id="usernameError"></span>
-                        <div class="invalid-feedback">
+                        <div class="invalid-feedback" id="usernameError">
                             Please choose a username that contains letters or numbers or underscore (_) or dot (.)
                         </div>
                         </div>
@@ -59,8 +56,7 @@
                         <label for="validationCustom03" class="form-label">Password<span class="red_star">*</span></label>
                         <input type="password" class="form-control" id="validationCustom03" placeholder="" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$" name="password" required>
                         <div class="invalid-feedback">
-                        Please choose a password from 8 that contains at least one capital letter and numbers and special characters
-
+                            Please choose a password from 8 that contains at least one capital letter and numbers and special characters
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -71,19 +67,22 @@
                             <option value="Consultant">Consultant</option>
                         </select>
                     </div>
-                    <div class="col-6">
+                    <div class="col-8">
                         <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
                         <label class="form-check-label" for="invalidCheck">
-                            I agree in <a data-bs-toggle="modal" data-bs-target="#exampleModal" href="#">terms & conditions</a> of Codee.
+                            I agree in <a data-bs-toggle="modal" class="forget_password" data-bs-target="#exampleModal" href="#">terms & conditions</a> of Codee.
                         </label>
                         <div class="invalid-feedback">
                             You must agree before submitting.
                         </div>
                         </div>
                     </div>
-                    <div class="col-6">
+                    <div class="col-4">
                         <button class="my_btn1 float-end" type="submit">Sign Up</button>
+                    </div>
+                    <div class="col-12 text-center">
+                        <p>Already have an account? <a class="forget_password" href="login.php">Loign here</a></p> 
                     </div>
                 </form>
             </div>

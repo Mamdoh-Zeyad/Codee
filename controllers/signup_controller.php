@@ -2,24 +2,19 @@
     include("../includes/mysql_inti.php");
 
     // Take values from the form
-    $first_name = sanitize($_POST['first_name']);
-    $last_name = sanitize($_POST['last_name']);
-    $birthdate = sanitize($_POST['birthdate']);
-    $nationality = sanitize($_POST['nationality']);
-    $email = sanitize($_POST['email']);
-    $phone_number = sanitize($_POST['phone_number']);
-    $username = sanitize($_POST['username']);
-    $password = sanitize($_POST['password']);
-    $role = sanitize($_POST['role']);
+    $first_name = $_POST['first_name'];
+    $last_name = $_POST['last_name'];
+    $birthdate = $_POST['birthdate'];
+    $nationality = $_POST['nationality'];
+    $email = $_POST['email'];
+    $phone_number = $_POST['phone_number'];
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $role = $_POST['role'];
 
     // Hash the password
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-    function sanitize($data)
-    {
-        return htmlspecialchars(stripslashes(trim($data)));
-    }
-
+ 
     if (isset($_POST['username'])) {
         $check_query_username = "SELECT * FROM users WHERE username = '$username'";
         $check_query_email = "SELECT * FROM users WHERE email = '$email'";

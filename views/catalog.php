@@ -31,7 +31,7 @@
                 <span>
                     Hello, <?php 
                             echo $_SESSION['first_name'] . " " . $_SESSION['last_name']; 
-                            if($_SESSION['role'] != 'User'){
+                            if($_SESSION['role'] === 'Admin'){
                             header("Location: ../views/access_denied.html"); 
                             exit();} 
                             ?>

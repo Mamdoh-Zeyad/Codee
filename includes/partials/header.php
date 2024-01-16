@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="../assets/fonts/fontawesome/css/brands.css"/>
     <link rel="stylesheet" href="../assets/fonts/fontawesome/css/solid.css"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/codee-logo - Copy.png">
 
     <!-- Scripts Files -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>

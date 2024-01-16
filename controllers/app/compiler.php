@@ -9,7 +9,7 @@
     fclose($programFile);
 
     if($language == "php") {
-        $output = shell_exec("C:/xampp\php\php.exe $filePath 2>&1");
+        $output = shell_exec("C:/Apps/xampp\php\php.exe $filePath 2>&1");
         echo $output;
     }
     if($language == "python") {

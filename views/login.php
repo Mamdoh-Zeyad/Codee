@@ -7,16 +7,14 @@
     <div class="container-fluid h-100">
         <div class="row justify-content-between h-100">
             <div class="col-xl-4 p-3 signup_text_side d-flex align-items-center justify-content-center">
-                <img class="signup_text_side_logo" src="../assets/img/codee-logo.png" alt="codee icon">
+                <a href="home.php"><img class="signup_text_side_logo" src="../assets/img/codee-logo.png" alt="codee icon"></a>
             </div>
             <div class="col-xl-2 p-3"></div>
             <div class="col-xl-4 p-3 d-flex align-items-center justify-content-center">
                 <form class="row g-3 needs-validation" method="post" action="../controllers/login_controller.php" novalidate>
                     <?php 
                         if (isset($_GET['error'])) { ?>
-                        <p class="login_error">
-                            <?php echo $_GET['error']; ?>
-                        </p>
+                        <div class="alert alert-danger"><?php echo $_GET['error']; ?></div>
                     <?php } ?>
                     <div class="form_header">
                         <p class="my_header_font">Login To Your Account.</p>
@@ -29,13 +27,12 @@
                         <label for="validationCustom03" class="form-label">Password<span class="red_star">*</span></label>
                         <input type="password" class="form-control" id="validationCustom03" id="password" name="password">
                     </div>
-                    <div class="col-3">
+                    <div class="col-12">
                         <button class="my_btn1" type="submit">Login</button>
+                        <a class="forget_password" href="../mailer/reset.php">Forget Password?</a>
                     </div>
-                    <div class="col-9">
-                        <div class="forget_password_div">
-                            <a class="forget_password" href="">Forget Password?</a>
-                        </div>
+                    <div class="col-12 text-center">
+                        <p>Don't have an account? <a class="forget_password" href="signup.php">Sign up here</a></p> 
                     </div>
                 </form>
             </div>

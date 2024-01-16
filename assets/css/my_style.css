@@ -48,10 +48,8 @@ body, html{
     font-size: 18px;
 }
 #myBtn:hover {
-    /* background-color: white; */
     color: var(--yellow-color);
 	transition: 0.5s;
-    /* border: 1px solid black; */
 }
 /* Scroll to Top*/
 svg {
@@ -63,7 +61,6 @@ svg {
 	width: 150px;
 }
 /* End Global Rules */
-
 /* Start Home Page Header */
 .my_navbar{
 	background-color: var(--darkgreen-color);
@@ -95,7 +92,6 @@ svg {
 	color: var(--blue-color);
 }
 /* End Home Page Header */
-
 /* Start Home Page  */
 .slider-text {
     color: #333;
@@ -150,7 +146,6 @@ color: var(--blue-color);
 	color: var(--yellow-color);
 }
 /* End Home Page  */
-
 /* Start Home Page Footer */
 .home_footer{
 	position: absolute;
@@ -162,10 +157,8 @@ color: var(--blue-color);
     padding-top: 20px;
 	text-align: center;
     color: #fff;
-	/* bottom: 0; */
 }
 /* End Home Page Footer */
-
 /* Start Signup Page */
 .signup_text_side{
 	background-color: var(--darkgreen-color);
@@ -183,7 +176,6 @@ color: var(--blue-color);
 	color: red;
 }
 /* End Singup Page */
-
 /* Start Login Page */
 .forget_password_div{
 	padding-top: 6px;
@@ -195,23 +187,13 @@ color: var(--blue-color);
 .forget_password:hover{
 	color: var(--yellow-color);
 }
-.login_error{
-    color: #D63301;
-    background-color: #FFCCBA;
-    text-align: center;
-    padding: 5px;
-	border-radius: 10px;
-}
 /* End Login Page */
-
 /* Start Catalog Page */
 .logout_icon{
 	color: var(--blue-color);
 }
 /* End Catalog Page */
-
-
-/* start Developer  page */
+/* Start Developer Page */
 .IDEheader {
     background: var(--blue-color);
     text-align: left;
@@ -221,37 +203,29 @@ color: var(--blue-color);
     padding: 4px;
     font-family: sans-serif;
 }
-
 .language-container {
 	display: flex;
 	align-items: center;
 	background-color:lightgray;
 	padding: 4px;
-    /* border: 2px solid gray;  */
 }
-
 .language-label {
-	margin-right: 10px; /* Adjust the spacing between label and select */
+	margin-right: 10px;
 }
-
 .language-container .smaller-select {
-	width: 150px; /* You can adjust the width as needed */
+	width: 150px;
 }
-
 .languages {
     background: white;
     border: 1px solid gray;
 }
-
 #editor { 
     height: 400px;
- }
-
+}
 .button-container {
     text-align: right;
     padding: 4px;
 }
-
 .btnIDE {
     background: var(--blue-color);
     color: white;
@@ -259,7 +233,6 @@ color: var(--blue-color);
     border: 0;
 	border-radius: 10px;
 }
-
 .labelOutput{
     background: var(--blue-color);
     text-align: left;
@@ -267,8 +240,7 @@ color: var(--blue-color);
     font-weight: bold;
     color: white;
     padding: 4px;
-    font-family: sans-serif;
-    
+    font-family: sans-serif; 
 }
 .output {
         padding: 4px;
@@ -276,21 +248,7 @@ color: var(--blue-color);
         resize: none;
         border: 3px solid gray; 
 }
-
-
-                                 /* chat bot */
-/* * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: "poppins", sans-serif;
-    ;
-}
-
-body {
-    background-color: #E3f2fd;
-} */
-
+/* chat bot */
 .chatbot-toggler {
     position: fixed;
     right: 40px;
@@ -308,24 +266,19 @@ body {
     border-radius: 50%;
     transition: all 0.2s ease;
 }
-
 .show-chatbot .chatbot-toggler {
     transform: rotate(90deg);
 }
-
 .chatbot-toggler span {
     position: absolute;
 }
-
 .show-chatbot .chatbot-toggler span:first-child,
 .chatbot-toggler span:last-child {
     opacity: 0;
 }
-
 .show-chatbot .chatbot-toggler span:last-child {
     opacity: 1;
 }
-
 .chatbot {
     position: fixed;
     right: 20px;
@@ -342,25 +295,21 @@ body {
         0 32px 64px -48px rgba(0, 0, 0, 0.5);
     transition: all 0.1s ease;
 }
-
 .show-chatbot .chatbot {
     transform: scale(1);
     opacity: 1;
     pointer-events: auto;
 }
-
 .chatbot header {
     background-color: var(--blue-color);
     padding: 16px 0;
     text-align: center;
     position: relative;
 }
-
 .chatbot header h2 {
     color: #fff;
     font-size: 1.4rem;
 }
-
 .chatbot header span {
     position: absolute;
     right: 20px;
@@ -370,7 +319,6 @@ body {
     display: none;
     transform: translateY(-50%);
 }
-
 .chatbot .chatbox {
     height: 510px;
     overflow-y: auto;
@@ -380,7 +328,6 @@ body {
 .chatbox .chat {
     display: flex;
 }
-
 .chatbox .incoming span {
     height: 32px;
     width: 32px;
@@ -391,15 +338,11 @@ body {
     line-height: 32px;
     border-radius: 4px;
     margin: 0 20px 17px 0;
-	/* margin: 14px; */
-
 }
-
 .chatbox .outgoing {
     margin: 20px 0;
     justify-content: flex-end;
 }
-
 .chatbox .chat p {
     color: #fff;
     background-color: var(--blue-color);
@@ -409,19 +352,15 @@ body {
     padding: 12px 16px;
     border-radius: 10px 10px 0 10px;
 }
-
 .chatbox .chat p.error {
-
     color: #721c24;
     background-color: #f8d7da;
 }
-
 .chatbox .incoming p {
     color: #000;
     background-color: #f2f2f2;
     border-radius: 10px 10px 0 10px;
 }
-
 .chatbot .chat-input {
     position: absolute;
     bottom: 0;
@@ -432,7 +371,6 @@ body {
     padding: 5px 20px;
     border-top: 1px solid #ccc;
 }
-
 .chat-input textarea {
     height: 55px;
     width: 100%;
@@ -443,7 +381,6 @@ body {
     resize: none;
     padding: 16px 15px 16px 0;
 }
-
 .chat-input span {
     align-self: flex-end;
     height: 55px;
@@ -453,11 +390,9 @@ body {
     cursor: pointer;
     visibility: hidden;
 }
-
 .chat-input textarea:valid~span {
     visibility: visible;
 }
-
 @media(max-width:490px) {
     .chatbot {
         right: 0;
@@ -466,16 +401,16 @@ body {
         height: 100%;
         border-radius: 0;
     }
-
     .chatbot .chatbox {
         height: 90%;
     }
-
     .chatbot header span {
         display: block;
     }
 }
-
+#active_link{
+    color: var(--yellow-color);
+}
 /* End Developer page */
 
 

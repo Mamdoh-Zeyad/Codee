@@ -36,7 +36,7 @@
                 $_SESSION['last_name'] = $row['last_name'];
                 $_SESSION['role'] = $row['role'];
 
-                if ($_SESSION['role'] === "User") {
+                if ($_SESSION['role'] === "Developer" || $_SESSION['role'] === "Consultant" || $_SESSION['role'] === "User") {
                     header("Location: ../views/catalog.php");
                     exit();
                 }
