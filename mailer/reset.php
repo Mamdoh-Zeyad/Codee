@@ -1,4 +1,5 @@
 <!--Request Header-->
+<title>Codee - Reset Password</title>
 <?php
     require_once('../includes/partials/header.php')
 ?>

@@ -9,7 +9,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 /* End Imports*/
-
 /* Start Root */
 :root{
 	--darkgreen-color: #313631;
@@ -20,7 +19,6 @@
 	--box-shadw: 0px 4px 6px 0px #0c002e0f;
 }
 /* End Root */
-
 /* Start Global Rules */
 /* *{
 	font-family: var(--cairo-font-family);
@@ -52,14 +50,26 @@ body, html{
 	transition: 0.5s;
 }
 /* Scroll to Top*/
-svg {
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	height: 150px;
-	width: 150px;
+/* Loader */
+.loader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fade-out 0.5s ease-in-out 1s forwards; /* Fade out after 2 seconds */
+} 
+.loader-logo {
+    animation: bounce 2s ease-in-out;
 }
+@keyframes fade-out {
+    100% { opacity: 0; }
+}
+/* Loader */
 /* End Global Rules */
 /* Start Home Page Header */
 .my_navbar{
@@ -412,5 +422,38 @@ color: var(--blue-color);
     color: var(--yellow-color);
 }
 /* End Developer page */
+/* Start Access Denied Page */
+.access_denied_body {
+    text-align: center;
+    background-color: var(--darkgreen-color);
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    min-height: 100vh;
+}
+.access_denied_container {
+    width: 50%;
+    padding: 30px; 
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    animation: wiggle 2s ease-in-out;
+}
+.access_denied_h1{
+    color: var(--yellow-color);
+}
+.access_denied_h3{
+    color: var(--blue-color);
+}
+.access_denied_logo{
+    animation: bounce 2s ease-in-out;
+}
+@keyframes bounce {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+/* End Access Denied Page */
+
+
 
 

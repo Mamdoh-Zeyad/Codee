@@ -169,7 +169,7 @@
 <div class="About pb-5 ">
   <div class="container">
   <div class="card-body" >
-    <h2 class="my_text card-title"><strong>Work Flow</strong></h5>
+    <h2 class="my_text card-title"><strong>Work Flow</strong></h2>
     <div>
       <hr class="my_hr">
     </div>
@@ -245,7 +245,7 @@
         <div class="mb-3">
           <label for="validationCustom03" class="form-label">Phone Number<span class="red_star">*</span></label>
           <div class="input-group has-validation">
-            <input type="text" class="form-control form-control-sm" id="validationCustom03" aria-describedby="inputGroupPrepend" placeholder="00965xxxxxxxx" name="phone_number" pattern="[0-9]+" required>
+            <input type="text" class="form-control form-control-sm" id="validationCustom03" placeholder="00965xxxxxxxx" name="phone_number" pattern="[0-9]+" required>
           </div>
         </div>
 
@@ -265,14 +265,14 @@
 
 <!--Start Home Page Footer-->
 <div class="home_footer">
-    <p>&copy; 2023 Codee - All Rights Reserved</p>
+    <p>&copy; 2024 Codee - All Rights Reserved</p>
 </div>
 
 <!-- Top function -->
 <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa-solid fa-angles-up"></i></button>
 
 <!-- Scripts File -->
-<script type="text/javascript" src="../assets/js/home.js"></script>
+<script src="../assets/js/home.js"></script>
 
 <!--Request Footer-->
 <?php

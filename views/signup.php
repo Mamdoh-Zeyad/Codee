@@ -1,4 +1,5 @@
 <!--Request Header-->
+<title>Codee - Signup</title>
 <?php
     require_once('../includes/partials/header.php')
 ?>

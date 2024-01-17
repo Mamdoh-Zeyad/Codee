@@ -1,4 +1,5 @@
 <!--Request Header-->
+<title>Codee - Development Area</title>
 <?php
     require_once('../includes/partials/header.php');
     session_start();
@@ -21,18 +22,19 @@
                 <a class="nav-link my_nav" href="#"><i class="fa-solid fa-comment logout_icon"></i> Chatting</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link my_nav" id="active_link" href="developerPage.php"><i class="fa-solid fa-code logout_icon"></i> Developement Area</a>
+                <a class="nav-link my_nav" id="active_link" href="development_area.php"><i class="fa-solid fa-code logout_icon"></i> Developement Area</a>
                 </li>
             </ul>
-        <div class="text-center">
-            <span>
-                Hello, <?php 
-                        echo $_SESSION['first_name'] . " " . $_SESSION['last_name']; 
-                        if($_SESSION['role'] != 'Developer'){
-                        header("Location: ../views/access_denied.html"); 
-                        exit();} 
-                        ?>
-            | </span> <a title="Logout" href="../controllers/logout_controller.php"><i class="fa-solid fa-right-from-bracket logout_icon"></i> </a> 
+            <div class="text-center">
+                <span>
+                    Hello, <?php 
+                            echo $_SESSION['first_name'] . " " . $_SESSION['last_name']; 
+                            if($_SESSION['role'] != 'Developer'){
+                            header("Location: ../views/access_denied.php"); 
+                            exit();} 
+                            ?>
+                | </span> <a title="Logout" href="../controllers/logout_controller.php"><i class="fa-solid fa-right-from-bracket logout_icon"></i> </a> 
+            </div>
         </div>
     </div>
 </nav>
@@ -82,7 +84,7 @@
 
 <!--Start Home Page Footer-->
 <div class="home_footer">
-    <p>&copy; 2023 Codee - All Rights Reserved</p>
+    <p>&copy; 2024 Codee - All Rights Reserved</p>
 </div>
 
 <!-- Scripts File -->
