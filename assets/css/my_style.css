@@ -50,6 +50,14 @@ body, html{
 	transition: 0.5s;
 }
 /* Scroll to Top*/
+/* svg {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	height: 150px;
+	width: 150px;
+} */
 /* Loader */
 .loader-container {
     position: fixed;
@@ -154,6 +162,9 @@ color: var(--blue-color);
 .nav-item .my_nav:hover{
 	transition: 0.5s;
 	color: var(--yellow-color);
+}
+.My-font-family{
+    font-family: var(--cairo-font-family);
 }
 /* End Home Page  */
 /* Start Home Page Footer */
@@ -454,6 +465,30 @@ color: var(--blue-color);
 }
 /* End Access Denied Page */
 
+/*  start verifiction page */
+.list_group_color{
+    color: red;
+}
 
+#file-chosen{
+	margin-left: 10px;
+}
 
-
+.upload-button{
+	/* background-color: var(--blue-color); */
+	/* color: white; */
+	padding: 10px;
+	border-radius:10px;
+	cursor: pointer;
+	margin-top: 10px;
+    border: 1px solid var(--blue-color);
+    border-radius: 10px;
+    box-shadow: 2px 2px 9px var(--blue-color);
+	font-weight: bold;
+}
+.upload-button:hover{
+	background-color: var(--yellow-color);
+	box-shadow: 2px 2px 9px var(--yellow-color);
+	transition: 0.5s;
+}
+/*  End verifiction page */

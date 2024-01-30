@@ -176,7 +176,7 @@
     <h6 class="card-text mb-4"><strong>Will help you to gain knowledge about the sequence of 
                           activities for each actor during the use of the system. 
                           The following are our proposed activity diagrams:</strong></h6></div>
-    <div class="row align-items-center">
+    <div class="row align-items-center My-font-family">
        <!-- Left Section -->
       <div class="col-md-3 slider-text">
       <div class="card text-center">

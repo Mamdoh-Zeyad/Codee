@@ -34,6 +34,11 @@
                 $_SESSION['username'] = $row['username'];
                 $_SESSION['first_name'] = $row['first_name'];
                 $_SESSION['last_name'] = $row['last_name'];
+                $_SESSION['birthdate'] = $row['birthdate'];
+                $_SESSION['email'] = $row['email'];
+                $_SESSION['phone_number'] = $row['phone_number'];
+                $_SESSION['nationality'] = $row['nationality'];
+                $_SESSION['id'] = $row['id'];
                 $_SESSION['role'] = $row['role'];
 
                 if ($_SESSION['role'] === "Developer" || $_SESSION['role'] === "Consultant" || $_SESSION['role'] === "User") {
