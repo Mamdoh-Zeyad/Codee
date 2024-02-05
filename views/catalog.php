@@ -43,6 +43,32 @@
     </div>
 </nav>
 
+<div class="catalog_content">
+    <div class="container mt-4">
+        <div class="form_header">
+            <p class="my_header_font">Developers & Consultants Catalog.</p>
+            <p class="light_font">Use the services of the best programmers around the world.</p>
+            <?php
+                if($_SESSION['role'] === 'Developer' && $_SESSION['status'] === "Inactive"){
+                    echo "
+                    <div class='container'>
+                        <div class='row justify-content-start my_alert'>
+                            <div class='col-8'>
+                                <p class='pt-1'>
+                                    To join as a developer in our community you must verify your account to appear in the catalog.
+                                </p>
+                            </div>
+                            <div class='col-4'>
+                                <button class='my_btn1 float-end' type='submit'><a href='#'>Verify Account</a></button> 
+                            </div>
+                        </div>
+                    </div>";
+                }
+            ?>
+        </div>
+    </div>
+</div>
+
 <!--Start Home Page Footer-->
 <div class="home_footer">
     <p>&copy; 2024 Codee - All Rights Reserved</p>

@@ -36,7 +36,7 @@ fetch('https://restcountries.com/v3.1/all')
     .then(countries => {
     countries.forEach(country => {
         const option = document.createElement('option');
-        option.value = country.cca2; // Use the country code as the value
+        option.value = country.name.common; // Use the country code as the value
         option.textContent = `${country.name.common} (${country.cca2})`;
         countrySelect.appendChild(option);
     });

@@ -35,9 +35,13 @@
                 $_SESSION['first_name'] = $row['first_name'];
                 $_SESSION['last_name'] = $row['last_name'];
                 $_SESSION['role'] = $row['role'];
+                $_SESSION['status'] = $row['status'];
 
                 if ($_SESSION['role'] === "Developer" || $_SESSION['role'] === "Consultant" || $_SESSION['role'] === "User") {
                     header("Location: ../views/catalog.php");
+                    exit();
+                }else{
+                    header("Location: ../views/admin_users.php");
                     exit();
                 }
                 // Add other role checks as needed

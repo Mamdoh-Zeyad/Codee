@@ -64,6 +64,8 @@ body, html{
     animation: fade-out 0.5s ease-in-out 1s forwards; /* Fade out after 2 seconds */
 } 
 .loader-logo {
+    width: 100px;
+    height: 100px;
     animation: bounce 2s ease-in-out;
 }
 @keyframes fade-out {
@@ -201,6 +203,18 @@ color: var(--blue-color);
 /* Start Catalog Page */
 .logout_icon{
 	color: var(--blue-color);
+}
+.light_font{
+    font-size: 24px;
+    font-weight: lighter;
+}
+.my_alert{
+    border: 1px solid #f5c2c7;
+    background-color: #f5c2c7;
+    border-radius: 0.375rem;
+    padding-top: 10px;
+    margin-bottom: 20px;
+    color: #842029;
 }
 /* End Catalog Page */
 /* Start Developer Page */
@@ -453,6 +467,66 @@ color: var(--blue-color);
     100% { transform: translateY(0); }
 }
 /* End Access Denied Page */
+
+/* Start Admin Page */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px; /* Add margin to separate from the table */
+}
+
+.pagination .page-link {
+    color: var(--blue-color);
+    padding: 8px 16px; /* Adjust padding to control the size of the links */
+}
+
+.pagination .page-item.active .page-link {
+    color: #fff;
+    background-color: var(--blue-color);
+    border-color: var(--yellow-color);
+}
+.pagination .page-link:hover{
+    background-color: var(--yellow-color);
+	box-shadow: 2px 2px 9px var(--yellow-color);
+	transition: 0.5s;
+}
+.edit_icon{
+    color: var(--blue-color);
+}
+.delete_icon{
+    color: red
+}
+.edit_icon:hover{
+    color: var(--yellow-color);
+	transition: 0.5s;
+}
+.delete_icon:hover{
+    color: var(--yellow-color);
+	transition: 0.5s;
+}
+.my_btn2{
+	padding: 5px 20px 5px 20px;
+	margin-right: 5px;
+    margin-left: 5px;
+    border: 1px solid red;
+    border-radius: 10px;
+    box-shadow: 2px 2px 9px red;
+	font-weight: bold;
+}
+.my_btn2:hover{
+	background-color: var(--yellow-color);
+	box-shadow: 2px 2px 9px var(--yellow-color);
+	transition: 0.5s;
+}
+.my_btn2 a{
+	text-decoration: none;
+	color: var(--blue-color);
+}
+.my_btn2 a:hover{
+	text-decoration: none;
+	color: var(--blue-color);
+}
+/* End Admin Page */
 
 
 
