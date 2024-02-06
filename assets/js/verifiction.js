@@ -36,7 +36,7 @@ fetch('https://restcountries.com/v3.1/all')
     .then(countries => {
     countries.forEach(country => {
         const option = document.createElement('option');
-        option.value = country.cca2; // Use the country code as the value
+        option.value = country.name.common; // Use the country code as the value
         option.textContent = `${country.name.common} (${country.cca2})`;
         countrySelect.appendChild(option);
     });
@@ -155,3 +155,19 @@ document.getElementById("skillsForm").addEventListener('submit', function (evt) 
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+window.addEventListener('load', function() {
+    // Fetch and append the loader content
+    fetch('loader.html')
+      .then(response => response.text())
+      .then(loaderContent => {
+        const loaderContainer = document.createElement('div');
+        loaderContainer.innerHTML = loaderContent;
+        document.body.appendChild(loaderContainer);
+  
+        // Fade out and remove the loader after the page loads
+        loaderContainer.addEventListener('animationend', function() {
+          this.remove();
+        });
+      });
+  });

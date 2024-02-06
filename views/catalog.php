@@ -45,7 +45,7 @@
 
 <div class="catalog_content">
     <div class="container mt-4">
-        <div class="form_header">
+        <div class="form_header card p-3 mt-4 mb-4">
             <p class="my_header_font">Developers & Consultants Catalog.</p>
             <p class="light_font">Use the services of the best programmers around the world.</p>
             <?php
@@ -59,7 +59,19 @@
                                 </p>
                             </div>
                             <div class='col-4'>
-                                <button class='my_btn1 float-end' type='submit'><a href='#'>Verify Account</a></button> 
+                                <button class='my_btn1 float-end' type='submit'><a href='verifiction.php'>Verify Account</a></button> 
+                            </div>
+                        </div>
+                    </div>";
+                }
+                else if ($_SESSION['role'] === 'Developer' && $_SESSION['status'] === "Pending"){
+                    echo "
+                    <div class='container'>
+                        <div class='row justify-content-start my_alert2'>
+                            <div class='col-8'>
+                                <p class='pt-1'>
+                                    Thank you for submitting the form, just be patient we are verifying your account!
+                                </p>
                             </div>
                         </div>
                     </div>";

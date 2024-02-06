@@ -11,30 +11,33 @@
     $preferd_programming_language = $_POST['preferd_programming_language'];
     $experience = $_POST['experience'];
     $file = $_POST['file'];
+    $user_id = $_POST['user_id'];
 
-            // Insert data into the DB
-            $sql = "INSERT INTO development_skills (Certification, country_higher_degree, Major, GPA, programming_experience, development_category, preferd_programming_language,experience, file) VALUES 
-            ('$Certification', '$country_higher_degree', '$Major', '$GPA', '$programming_experience', '$development_category', '$preferd_programming_language','$experience','$file')";
+    // Insert data into the DB
+    $sqlInsert = "INSERT INTO development_skills (Certification, country_higher_degree, Major, GPA, programming_experience, 
+    development_category, preferd_programming_language,experience, file, user_id) VALUES 
+    ('$Certification', '$country_higher_degree', '$Major', '$GPA', '$programming_experience', 
+    '$development_category', '$preferd_programming_language','$experience','$file', $user_id)";
 
-            // Check if the data inserted or not
-            if ($conn->query($sql) === TRUE) {
-                $response = "Success";
-            } else {
-                $response = "Error: " . $sql . "<br>" . $conn->error;
-            }
+    $sqlAlter = "UPDATE users SET status = 'Pending' WHERE id = $user_id";
 
-            // Close Connection
-            $conn->close();
+    // Check if the data inserted or not
+    if ($conn->query($sqlInsert) === TRUE && $conn->query($sqlAlter) === TRUE) {
+        $response = "Success";
+    } else {
+        $response = "Error: " . $sqlInsert . "<br>" . $conn->error;
+    }
 
-            echo '<script>';
-            echo 'var data = "' . $response . '";';
-            echo 'if (data === "Success") {';
-            echo '    alert("Your information has been added successfully. You will now be redirected to the catalog page.");';
-            echo '    window.location = "../views/catalog.php";';
-            echo '} else {';
-            echo '    alert("Error: " + data);';
-            echo '}';
-            echo '</script>';
-        
-    
+    // Close Connection
+    $conn->close();
+
+    echo '<script>';
+    echo 'var data = "' . $response . '";';
+    echo 'if (data === "Success") {';
+    echo '    alert("Your information has been added successfully. You will now be redirected to the catalog page.");';
+    echo '    window.location = "../views/login.php";';
+    echo '} else {';
+    echo '    alert("Error: " + data);';
+    echo '}';
+    echo '</script>'; 
 ?>
