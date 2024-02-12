@@ -21,14 +21,14 @@
             ?>
                 <script type="text/javascript"> 
                     alert('Username already exists!'); 
-                    window.location = "../../views/admin_users.php";
+                    window.location = "../../views/admin.php";
                 </script> 
             <?php
         } else if ($result_email->num_rows > 0) {
             ?>
                 <script type="text/javascript"> 
                     alert('Email already exists!'); 
-                    window.location = "../../views/admin_users.php";
+                    window.location = "../../views/admin.php";
                 </script> 
             <?php
         } else {
@@ -42,7 +42,7 @@
                 ?>
                     <script type="text/javascript"> 
                         alert('User information edited successfully.'); 
-                        window.location = "../../views/admin_users.php";
+                        window.location = "../../views/admin.php";
                     </script> 
                 <?php
             } else {

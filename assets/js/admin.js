@@ -1,5 +1,13 @@
+/*
+  - This is a JS file for the admin.php page.
+*/
+
+//Check connection 
 console.log("Hello");
 
+/* ------------------------------------------------------Break Line------------------------------------------------------ */
+
+// Scripts for form validation. 
 (() => {
     'use strict'
     // Fetch all the forms we want to apply custom Bootstrap validation styles to
@@ -18,7 +26,7 @@ console.log("Hello");
     })
 })()
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////
+/* ------------------------------------------------------Break Line------------------------------------------------------ */
 
 $(document).ready(function () {
     $('.edit_icon').on('click', function () {
@@ -30,7 +38,6 @@ $(document).ready(function () {
             method: 'POST',
             data: { id: userId },
             success: function (response) {
-                // Populate modal fields with fetched user info
                 var userInfo = JSON.parse(response);
                 $('#exampleModal input[name="id"]').val(userInfo.id);
                 $('#exampleModal input[name="first_name"]').val(userInfo.first_name);
@@ -47,29 +54,35 @@ $(document).ready(function () {
     });
     $('.delete_icon').on('click', function () {
         const userId = this.getAttribute("data-id");
-        // Ask for confirmation before deleting
         const isConfirmed = confirm("Are you sure you want to delete this user?");
         if (isConfirmed) {
-            // Perform the delete action (you may use AJAX to send a delete request)
             window.location.href = "../controllers/admin/delete_user.php?id=" + userId;
         }
     });
-});
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-window.addEventListener('load', function() {
-    // Fetch and append the loader content
-    fetch('loader.html')
-      .then(response => response.text())
-      .then(loaderContent => {
-        const loaderContainer = document.createElement('div');
-        loaderContainer.innerHTML = loaderContent;
-        document.body.appendChild(loaderContainer);
-  
-        // Fade out and remove the loader after the page loads
-        loaderContainer.addEventListener('animationend', function() {
-          this.remove();
-        });
+    $('.verify_icon').on('click', function () {
+      var userId = $(this).data('id');
+      $.ajax({
+          url: 'http://localhost/codee/controllers/admin/fetch_request_info.php', // Change this to the actual PHP file to fetch user info
+          method: 'POST',
+          data: { id: userId },
+          success: function (response) {
+              var userInfo = JSON.parse(response);
+              $('#exampleModal1 input[name="user_id"]').val(userInfo.user_id);
+              $('#exampleModal1 input[name="Certification"]').val(userInfo.Certification);
+              $('#exampleModal1 input[name="country_higher_degree"]').val(userInfo.country_higher_degree);
+              $('#exampleModal1 input[name="Major"]').val(userInfo.Major);
+              $('#exampleModal1 input[name="GPA"]').val(userInfo.GPA);
+              $('#exampleModal1 input[name="programming_experience"]').val(userInfo.programming_experience);
+              $('#exampleModal1 input[name="development_category"]').val(userInfo.development_category);
+              $('#exampleModal1 input[name="preferd_programming_language"]').val(userInfo.preferd_programming_language);
+              $('#exampleModal1 input[name="experience"]').val(userInfo.experience);
+              $('#exampleModal1 input[name="file"]').val(userInfo.file);
+          },
+          error: function (error) {
+              console.log('Error fetching user info:', error);
+          }
       });
+  });
 });
+
+/* ------------------------------------------------------Break Line------------------------------------------------------ */

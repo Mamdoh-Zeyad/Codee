@@ -2,6 +2,7 @@
 <title>Codee - Verification Request</title>
 <?php
     require_once('../includes/partials/header.php');
+    include("../includes/functions.php");
     session_start();
     if (isset($_SESSION['username']) && isset($_SESSION['first_name']) && isset($_SESSION['last_name'])
     && isset($_SESSION['birthdate'])&& isset($_SESSION['email'])&& isset($_SESSION['phone_number'])
@@ -34,17 +35,9 @@
                     }
                 ?>
             </ul>
-            <div class="text-center">
-                <span>
-                    Hello, <?php 
-                            echo $_SESSION['first_name'] . " " . $_SESSION['last_name']; 
-                            if($_SESSION['role'] === 'Admin'){
-                            header("Location: ../views/access_denied.php"); 
-                            exit();} 
-                            ?>
-                | </span> <a title="Logout" href="../controllers/logout_controller.php">
-                    <i class="fa-solid fa-right-from-bracket logout_icon"></i> </a> 
-            </div>
+            <?php 
+                displayDevConDropdownMenu('Developer', 'Consultant') 
+            ?>
         </div>
     </div>
 </nav>
@@ -54,7 +47,7 @@
     <div class="container-fluid">
         <div class="row justify-content-between">
             <div class="col-xl-2 p-3"></div>
-            <div class="col-xl-8 p-3 card mb-4">
+            <div class="col-xl-8 p-3 card mb-4 card_shadow">
                 <div class="row g-3">
                     <div class="form_header mb-1 col-12">
                         <p class="my_header_font">Developers & Consultants Verification</p>
@@ -73,7 +66,7 @@
     <div class="container-fluid">
         <div class="row justify-content-between">
             <div class="col-xl-2 p-3"></div>
-            <div class="col-xl-8 p-3 d-flex align-items-center justify-content-center card mb-4">
+            <div class="col-xl-8 p-3 d-flex align-items-center justify-content-center card mb-4 card_shadow">
                 <form id="registrationForm" class="row g-3 needs-validation" method="post"
                     action="../controllers/signup_controller.php" novalidate>
                     <div class="form_header mb-1">
@@ -136,7 +129,7 @@
     <div class="container-fluid">
         <div class="row justify-content-between">
             <div class="col-xl-2 p-3"></div>
-            <div class="col-xl-8 p-3 d-flex align-items-center justify-content-center card mb-4 ">
+            <div class="col-xl-8 p-3 d-flex align-items-center justify-content-center card mb-4 card_shadow">
                 <form id="skillsForm" class="row g-3 needs-validation" method="post"
                     action="../controllers/verifiction_controller.php" novalidate>
                     <div class="form_header mb-1">
@@ -198,8 +191,8 @@
                             <option value="php">PHP</option>
                             <option value="java">JAVA</option>
                             <option value="ptyhon">Python</option>   
-                            <option value="c">C#</option> 
-                            <option value="asp">ASP.Net</option>  
+                            <option value="C#">C#</option> 
+                            <option value="asp.net">ASP.Net</option>  
                             <option value="js">Java Script</option>        
                         </select>
                     </div>
@@ -231,7 +224,7 @@
         <div class="row justify-content-between">
             <div class="col-xl-2 p-3"></div>
 
-            <div class="col-xl-8 p-3 card mb-4">
+            <div class="col-xl-8 p-3 card mb-4 card_shadow">
                 <div class="row g-3">
                     <div class="form_header mb-1 col-12 ps-5">
                         <p class="my_header_font mt-4 ">Submit Your Form</p>
@@ -262,13 +255,14 @@
     </div>
 </div>
 
-<!--Start Home Page Footer-->
-<div class="home_footer">
-    <p>&copy; 2023 Codee - All Rights Reserved</p>
-</div>
+<!-- Footer -->
+<?php
+  displayFooter();
+?>
 
 <!-- Scripts File -->
 <script type="text/javascript" src="../assets/js/verifiction.js"></script>
+<script type="text/javascript" src="../assets/js/loader.js"></script>
 
 <!--Request Footer-->
 <?php

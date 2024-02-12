@@ -14,7 +14,7 @@
         ?>
         <script type="text/javascript"> 
             alert('User Deleted Successfully.'); 
-            window.location = "../../views/admin_users.php";
+            window.location = "../../views/admin.php";
         </script> 
         <?php
     } else {

@@ -4,10 +4,11 @@
     require_once('../includes/partials/header.php')
 ?>
 
+<!-- The content of the page -->
 <div class="login_container h-100">
     <div class="container-fluid h-100">
         <div class="row justify-content-between h-100">
-            <div class="col-xl-4 p-3 signup_text_side d-flex align-items-center justify-content-center">
+            <div class="col-xl-4 p-3 signup_text_side d-flex align-items-center justify-content-center card_shadow">
                 <a href="home.php"><img class="signup_text_side_logo" src="../assets/img/codee-logo.png" alt="codee icon"></a>
             </div>
             <div class="col-xl-2 p-3"></div>
@@ -44,6 +45,7 @@
 
 <!-- Scripts File -->
 <script type="text/javascript" src="../assets/js/login.js"></script>
+<script type="text/javascript" src="../assets/js/loader.js"></script>
 
 <!--Request Footer-->
 <?php

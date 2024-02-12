@@ -5,7 +5,7 @@
         $userId = $_POST['id'];
 
         // Fetch user info from the database
-        $sql = "SELECT * FROM users WHERE id = $userId";
+        $sql = "SELECT * FROM development_skills WHERE user_id = $userId";
         $result = mysqli_query($conn, $sql);
 
         if ($result) {

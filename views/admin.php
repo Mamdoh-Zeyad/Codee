@@ -2,10 +2,10 @@
 <title>Codee - Admin</title>
 <?php
     require_once('../includes/partials/header.php');
+    include("../includes/functions.php");
     session_start();
     if (isset($_SESSION['username']) && isset($_SESSION['first_name']) && isset($_SESSION['last_name'])) {
 ?>
-
 <!--Home Page Header-->
 <nav class="navbar navbar-expand-lg my_navbar">
     <div class="container-fluid">
@@ -14,39 +14,32 @@
         <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center">
-                <li class="nav-item">
-                    <a class="nav-link my_nav" id="active_link" aria-current="page" href="admin_users.php"><i class="fa-solid fa-users logout_icon"></i></i> Users Dashboard</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link my_nav" href="admin_support.php"><i class="fa-solid fa-headset logout_icon"></i> Support Dashboard</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link my_nav" href="admin_requests.php"><i class="fa-solid fa-hand-point-up logout_icon"></i> Verification Requests Dashboard</a>
-                </li>
-            </ul>
-            <div class="text-center">
-                <span>
-                    Hello, <?php 
-                            echo $_SESSION['first_name'] . " " . $_SESSION['last_name']; 
-                            if($_SESSION['role'] != 'Admin'){
-                            header("Location: ../views/access_denied.php"); 
-                            exit();} 
-                            ?>
-                | </span> <a title="Logout" href="../controllers/logout_controller.php"><i class="fa-solid fa-right-from-bracket logout_icon"></i> </a> 
-            </div>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center"></ul>
+            <?php
+                displayAdminDropdownMenu('Admin');
+            ?>
         </div>
     </div>
 </nav>
 
 <!-- Page Content -->
-<div class="content-body mt-5 mb-5">
+<div class="content-body mt-5">
     <div class="container">
         <div class="col-xl-12">
-            <div class="card">
+            <div class="card card_shadow">
                 <div class="card-body">
                     <p class="my_header_font">Users Dashboard.</p>
                     <p class="light_font">This table display all user’s information.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="content-body mt-3 mb-5">
+    <div class="container">
+        <div class="col-xl-12">
+            <div class="card card_shadow">
+                <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered verticle-middle text-center">
                             <thead>
@@ -88,7 +81,7 @@
                                             return 'badge bg-success';
                                         else if ($status === "Inactive")
                                             return 'badge bg-danger';
-                                        else if ($status === "pending")
+                                        else if ($status === "Pending")
                                             return 'badge bg-warning';
                                         else
                                             return 'badge bg-info';
@@ -110,14 +103,16 @@
                                         echo ' <td>';
                                         echo '<a data-bs-toggle="modal" data-bs-target="#exampleModal" title="Edit" href="javascript:void()" class="mr-4 pe-3 edit_icon" data-toggle="tooltip" data-placement="top"
                                             data-original-title="Edit" data-id="' . $id . '"><i class="fa-solid fa-pen-to-square"></i></a>';
-                                        echo '<a title="Delete" href="javascript:void()" class="delete_icon" data-toggle="tooltip" data-placement="top"
+                                        echo '<a title="Delete" href="javascript:void()" class="pe-3 delete_icon" data-toggle="tooltip" data-placement="top"
                                              data-original-title="Delete" data-id="' . $id . '"><i class="fa-solid fa-user-xmark"></i></a></span>';
+                                        echo '<a data-bs-toggle="modal" data-bs-target="#exampleModal1" title="Verify User" href="javascript:void()" class="verify_icon" data-toggle="tooltip" data-placement="top"
+                                             data-original-title="Verify" data-id="' . $id . '"><i class="fa-solid fa-person-circle-check"></i></a></span>';
                                         echo '</td>';
                                         echo '</tr>';
                                     }
 
                                     // Define the number of rows to display per page
-                                    $rowsPerPage = 20;
+                                    $rowsPerPage = 10;
 
                                     // Calculate the offset based on the current page
                                     $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
@@ -185,18 +180,18 @@
     </div>
 </div>
 
-<!--Start Home Page Footer-->
-<div class="home_footer">
-    <p>&copy; 2024 Codee - All Rights Reserved</p>
-</div>
+<!-- Footer -->
+<?php
+  displayFooter();
+?>
 
 <!-- Edit Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Edit User's Information</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-header modal_header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Edit User's Information.</h1>
+                <button type="button" id="modal_close" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form id="registrationForm" class="row g-3 needs-validation" method="post" action="../controllers/admin/edit_user.php" novalidate>
@@ -245,8 +240,69 @@
     </div>
 </div>
 
+<!-- Verify Modal -->
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header modal_header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Verify User.</h1>
+                <button type="button" id="modal_close" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            <form id="registrationForm" class="row g-3 needs-validation" method="post" action="../controllers/admin/approve_user.php" novalidate>
+                    <div class="col-md-6" hidden>
+                        <label for="validationCustom01" class="form-label">User ID</label>
+                        <input type="text" class="form-control" name="user_id" required readonly>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="validationCustom01" class="form-label">Certification</label>
+                        <input type="text" class="form-control" name="Certification" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="validationCustom01" class="form-label">Country Of Higher Degree</label>
+                        <input type="text" class="form-control" id="validationCustom01" name="country_higher_degree" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="validationCustom01" class="form-label">Major</label>
+                        <input type="text" class="form-control" id="validationCustom01" name="Major" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="validationCustom01" class="form-label">GPA</label>
+                        <input type="text" class="form-control" id="validationCustom01" name="GPA" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="validationCustom01" class="form-label">Programming Experience</label>
+                        <input type="text" class="form-control" id="validationCustom01" name="programming_experience" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="validationCustom01" class="form-label">Development Category</label>
+                        <input type="text" class="form-control" id="validationCustom01" name="development_category" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="validationCustom01" class="form-label">Programming Language</label>
+                        <input type="text" class="form-control" id="validationCustom01" name="preferd_programming_language" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="validationCustom01" class="form-label">Experience</label>
+                        <input type="text" class="form-control" id="validationCustom01" name="experience" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="validationCustom01" class="form-label">Files</label>
+                        <input type="text" class="form-control" id="validationCustom01" name="file" required>
+                    </div>
+                    <div class="modal-footer col-12">
+                        <button type="submit" class="my_btn1 float-end">Approve</button>
+                        <button type="button" class="my_btn2" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Scripts File -->
-<script type="text/javascript" src="../assets/js/admin/admin_users.js"></script>
+<script type="text/javascript" src="../assets/js/admin.js"></script>
+<script type="text/javascript" src="../assets/js/loader.js"></script>
 
 <!--Request Footer-->
 <?php

@@ -1,4 +1,13 @@
+/*
+  - This is a JS file for the reset.php page.
+*/
+
+//Check connection 
 console.log("Hello");
+
+/* ------------------------------------------------------Break Line------------------------------------------------------ */
+
+// Scripts for form validation. 
 (() => {
     'use strict'
   
@@ -18,11 +27,12 @@ console.log("Hello");
     })
 })()
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////
+/* ------------------------------------------------------Break Line------------------------------------------------------ */
 
+// Scripts for fetching the loader
 window.addEventListener('load', function() {
   // Fetch and append the loader content
-  fetch('../views/loader.html')
+  fetch('../views/loader.php')
     .then(response => response.text())
     .then(loaderContent => {
       const loaderContainer = document.createElement('div');
@@ -35,3 +45,5 @@ window.addEventListener('load', function() {
       });
     });
 });
+
+/* ------------------------------------------------------Break Line------------------------------------------------------ */

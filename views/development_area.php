@@ -2,6 +2,7 @@
 <title>Codee - Development Area</title>
 <?php
     require_once('../includes/partials/header.php');
+    include("../includes/functions.php");
     session_start();
     if (isset($_SESSION['username']) && isset($_SESSION['first_name']) && isset($_SESSION['last_name'])) {
 ?>
@@ -25,24 +26,17 @@
                 <a class="nav-link my_nav" id="active_link" href="development_area.php"><i class="fa-solid fa-code logout_icon"></i> Developement Area</a>
                 </li>
             </ul>
-            <div class="text-center">
-                <span>
-                    Hello, <?php 
-                            echo $_SESSION['first_name'] . " " . $_SESSION['last_name']; 
-                            if($_SESSION['role'] != 'Developer'){
-                            header("Location: ../views/access_denied.php"); 
-                            exit();} 
-                            ?>
-                | </span> <a title="Logout" href="../controllers/logout_controller.php"><i class="fa-solid fa-right-from-bracket logout_icon"></i> </a> 
-            </div>
+            <?php
+                displayDevDropdownMenu('Developer');
+            ?>
         </div>
     </div>
 </nav>
 
-
+<!-- content -->
 <div class="container">
-    <div class="IDEheader mt-4"> Codeboard Online IDE </div>
-    <div class="language-container">
+    <div class="IDEheader mt-4 card_shadow"> Codeboard Online IDE </div>
+    <div class="language-container card_shadow">
         <label for="languages" class="language-label">Select Language:</label>
         <select id="languages" class="form-select smaller-select" aria-label=".form-select-sm example" onchange="changeLanguage()">
             <option value="php"> PHP </option>
@@ -54,19 +48,18 @@
         </select>
         <button class="btnIDE ms-auto" onclick="executeCode()"> Run </button>
     </div>
-
-    <div class="editor mt-2" id="editor"></div>
-    <div class="labelOutput mt-3"> Output </div>
-    <div class="output mb-4 "></div>
+    <div class="editor card_shadow" id="editor"></div>
+    <div class="labelOutput card_shadow"> Output </div>
+    <div class="output mb-4 card_shadow"></div>
     </div>  
     <!-- chatbot -->
-    <button class="chatbot-toggler">
-    <span class="material-icons">mode_comment</span>
+    <button class="chatbot-toggler card_shadow">
+    <span class="material-icons"><i class="fa-brands fa-rocketchat"></i></span>
     <span class="material-icons">close</span>
     </button>
     <div class="chatbot">
     <header>
-        <h2>Chatbot</h2>
+        <h2>ChatGPT 3.5</h2>
         <span class="close-btn material-icons">close</span>
     </header>
     <ul class="chatbox">
@@ -81,17 +74,17 @@
     </div>
 </div>
 
-
-<!--Start Home Page Footer-->
-<div class="home_footer">
-    <p>&copy; 2024 Codee - All Rights Reserved</p>
-</div>
+<!-- Footer -->
+<?php
+  displayFooter();
+?>
 
 <!-- Scripts File -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="../assets/js/DeveloperPage/lib/ace.js"></script>
-<script src="../assets/js/DeveloperPage/lib/theme-monokai.js"></script>
-<script src="../assets/js/DeveloperPage/ide.js"></script>
+<script src="../assets/js/development_area/lib/ace.js"></script>
+<script src="../assets/js/development_area/lib/theme-monokai.js"></script>
+<script src="../assets/js/development_area/ide.js"></script>
+<script src="../assets/js/loader.js"></script>
 
 <!--Request Footer-->
 <?php

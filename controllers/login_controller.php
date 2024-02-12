@@ -46,7 +46,7 @@
                     header("Location: ../views/catalog.php");
                     exit();
                 }else{
-                    header("Location: ../views/admin_users.php");
+                    header("Location: ../views/admin.php");
                     exit();
                 }
                 // Add other role checks as needed

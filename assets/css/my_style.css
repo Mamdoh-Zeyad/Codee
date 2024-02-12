@@ -5,11 +5,13 @@
 		- Subject: Senior Project II 
 */
 
-/* Start Imports*/
+/* Imports*/
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
-/* End Imports*/
-/* Start Root */
+
+/* ------------------------------------------------------Break Line------------------------------------------------------ */
+
+/* Root */
 :root{
 	--darkgreen-color: #313631;
 	--blue-color:#0ed4a0;
@@ -18,17 +20,21 @@
 	--cairo-font-family: 'Cairo', sans-serif;
 	--box-shadw: 0px 4px 6px 0px #0c002e0f;
 }
-/* End Root */
-/* Start Global Rules */
+
+/* ------------------------------------------------------Break Line------------------------------------------------------ */
+
+/* Global Rules */
 /* *{
 	font-family: var(--cairo-font-family);
 } */
+
 body, html{
 	width: 100%;
 	height: 100%;
 	margin: 0;
 	padding: 0;
 }
+
 /* Scroll to Top*/
 #myBtn {
     display: none;
@@ -46,18 +52,11 @@ body, html{
     font-size: 18px;
 }
 #myBtn:hover {
-    color: var(--yellow-color);
+    background-color: var(--yellow-color);
+	box-shadow: 2px 2px 9px var(--yellow-color);
 	transition: 0.5s;
 }
-/* Scroll to Top*/
-/* svg {
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	height: 150px;
-	width: 150px;
-} */
+
 /* Loader */
 .loader-container {
     position: fixed;
@@ -79,9 +78,53 @@ body, html{
 @keyframes fade-out {
     100% { opacity: 0; }
 }
-/* Loader */
-/* End Global Rules */
-/* Start Home Page Header */
+
+/* dropdown_menu */
+.dropdown{
+    cursor: pointer;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 2px 2px 3px #999;
+    z-index: 1;
+} 
+.dropdown-content li a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+.dropdown-content li a:hover {
+    background-color: var(--yellow-color);
+	box-shadow: 2px 2px 9px var(--yellow-color);
+	transition: 0.5s;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+    animation: fadeIn 0.5s ease-in-out;
+}
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+}
+
+/* shadow */
+.card_shadow{
+    box-shadow: 2px 2px 3px #999
+}
+
+/* Global Rules */
+
+/* ------------------------------------------------------Break Line------------------------------------------------------ */
+
+/* Start Home Page */
 .my_navbar{
 	background-color: var(--darkgreen-color);
 	color: white;
@@ -111,8 +154,6 @@ body, html{
 	text-decoration: none;
 	color: var(--blue-color);
 }
-/* End Home Page Header */
-/* Start Home Page  */
 .slider-text {
     color: #333;
 }
@@ -165,11 +206,31 @@ color: var(--blue-color);
 	transition: 0.5s;
 	color: var(--yellow-color);
 }
-.My-font-family{
-    font-family: var(--cairo-font-family);
+.whatsapp_icon_contianer{
+    position:fixed;
+	width:60px;
+	height:60px;
+	bottom:85px;
+	right:25px;
+	background-color:#25d366;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+    font-size:30px;
+	box-shadow: 2px 2px 3px #999;
+    z-index:100;
 }
-/* End Home Page  */
-/* Start Home Page Footer */
+.whatsapp_icon_contianer:hover{
+    background-color: var(--yellow-color);
+	box-shadow: 2px 2px 9px var(--yellow-color);
+	transition: 0.5s;
+}
+.whatsapp_icon{
+    text-decoration: none;
+    margin-top:16px;
+    margin-left:2px;
+    color: white;
+}
 .home_footer{
 	position: absolute;
     left: 0;
@@ -181,7 +242,10 @@ color: var(--blue-color);
 	text-align: center;
     color: #fff;
 }
-/* End Home Page Footer */
+/* End Home Page */
+
+/* ------------------------------------------------------Break Line------------------------------------------------------ */
+
 /* Start Signup Page */
 .signup_text_side{
 	background-color: var(--darkgreen-color);
@@ -199,6 +263,7 @@ color: var(--blue-color);
 	color: red;
 }
 /* End Singup Page */
+
 /* Start Login Page */
 .forget_password_div{
 	padding-top: 6px;
@@ -211,6 +276,9 @@ color: var(--blue-color);
 	color: var(--yellow-color);
 }
 /* End Login Page */
+
+/* ------------------------------------------------------Break Line------------------------------------------------------ */
+
 /* Start Catalog Page */
 .logout_icon{
 	color: var(--blue-color);
@@ -235,16 +303,27 @@ color: var(--blue-color);
     margin-bottom: 20px;
     color: black;
 }
+.my_alert3{
+    border: 1px solid lightgreen;
+    background-color: lightgreen;
+    border-radius: 0.375rem;
+    padding-top: 10px;
+    margin-bottom: 20px;
+    color: green;
+}
 /* End Catalog Page */
+
+/* ------------------------------------------------------Break Line------------------------------------------------------ */
+
 /* Start Developer Page */
 .IDEheader {
-    background: var(--blue-color);
+    background: var(--darkgreen-color);
     text-align: left;
     font-size: 20px;
     font-weight: bold;
     color: white;
     padding: 4px;
-    font-family: sans-serif;
+    border-radius: 5px;
 }
 .language-container {
 	display: flex;
@@ -263,41 +342,49 @@ color: var(--blue-color);
     border: 1px solid gray;
 }
 #editor { 
-    height: 400px;
+    height: 350px;
+    border-radius: 5px;
 }
 .button-container {
     text-align: right;
     padding: 4px;
 }
 .btnIDE {
-    background: var(--blue-color);
+    background: var(--darkgreen-color);
     color: white;
     padding: 8px;
     border: 0;
 	border-radius: 10px;
+    border-radius: 5px;
+}
+.btnIDE:hover{
+    background-color: var(--yellow-color);
+	box-shadow: 2px 2px 9px var(--yellow-color);
+	transition: 0.5s;
 }
 .labelOutput{
-    background: var(--blue-color);
+    background: var(--darkgreen-color);
     text-align: left;
     font-size: 20px;
     font-weight: bold;
     color: white;
     padding: 4px;
-    font-family: sans-serif; 
+    border-radius: 5px;
 }
 .output {
         padding: 4px;
         min-height: 125px;
         resize: none;
         border: 3px solid gray; 
+        border-radius: 5px;
 }
 /* chat bot */
 .chatbot-toggler {
     position: fixed;
-    right: 40px;
-    bottom: 65px;
-    height: 50px;
-    width: 50px;
+    right:25px;
+    bottom:85px;
+    height:60px;
+    width:60px;
     color: #fff;
     border: none;
     display: flex;
@@ -305,9 +392,16 @@ color: var(--blue-color);
     justify-content: center;
     outline: none;
     cursor: pointer;
-    background-color: var(--blue-color);
-    border-radius: 50%;
+    background-color: var(--darkgreen-color);
+    border-radius: 50px;
     transition: all 0.2s ease;
+	text-align:center;
+    font-size:30px;
+}
+.chatbot-toggler:hover{
+    background-color: var(--yellow-color);
+	box-shadow: 2px 2px 9px var(--yellow-color);
+	transition: 0.5s;
 }
 .show-chatbot .chatbot-toggler {
     transform: rotate(90deg);
@@ -325,8 +419,8 @@ color: var(--blue-color);
 .chatbot {
     position: fixed;
     right: 20px;
-    bottom: 100px;
-    width: 420px;
+    bottom: 150px;
+    width: 350px;
     transform: scale(0.5);
     opacity: 0;
     pointer-events: none;
@@ -344,12 +438,14 @@ color: var(--blue-color);
     pointer-events: auto;
 }
 .chatbot header {
-    background-color: var(--blue-color);
-    padding: 16px 0;
+    background-color: var(--darkgreen-color);
+    padding-top: 8px;
+    padding-bottom: 8px;
     text-align: center;
     position: relative;
 }
 .chatbot header h2 {
+    padding-top: 8px;
     color: #fff;
     font-size: 1.4rem;
 }
@@ -363,11 +459,10 @@ color: var(--blue-color);
     transform: translateY(-50%);
 }
 .chatbot .chatbox {
-    height: 510px;
+    height: 420px;
     overflow-y: auto;
     padding: 30px 20px 100px;
 }
-
 .chatbox .chat {
     display: flex;
 }
@@ -376,7 +471,7 @@ color: var(--blue-color);
     width: 32px;
     color: #fff;
     align-self: flex-end;
-    background-color: var(--blue-color);
+    background-color: var(--darkgreen-color);
     text-align: center;
     line-height: 32px;
     border-radius: 4px;
@@ -455,6 +550,9 @@ color: var(--blue-color);
     color: var(--yellow-color);
 }
 /* End Developer page */
+
+/* ------------------------------------------------------Break Line------------------------------------------------------ */
+
 /* Start Access Denied Page */
 .access_denied_body {
     text-align: center;
@@ -487,16 +585,18 @@ color: var(--blue-color);
 }
 /* End Access Denied Page */
 
+/* ------------------------------------------------------Break Line------------------------------------------------------ */
+
 /* Start Admin Page */
 .pagination {
     display: flex;
     justify-content: center;
-    margin-top: 5px; /* Add margin to separate from the table */
+    margin-top: 5px;
 }
 
 .pagination .page-link {
     color: var(--blue-color);
-    padding: 8px 16px; /* Adjust padding to control the size of the links */
+    padding: 8px 16px;
 }
 
 .pagination .page-item.active .page-link {
@@ -515,11 +615,18 @@ color: var(--blue-color);
 .delete_icon{
     color: red
 }
+.verify_icon{
+    font-size: 18px;
+}
 .edit_icon:hover{
     color: var(--yellow-color);
 	transition: 0.5s;
 }
 .delete_icon:hover{
+    color: var(--yellow-color);
+	transition: 0.5s;
+}
+.verify_icon:hover{
     color: var(--yellow-color);
 	transition: 0.5s;
 }
@@ -545,20 +652,31 @@ color: var(--blue-color);
 	text-decoration: none;
 	color: var(--blue-color);
 }
+.modal_header{
+    background-color: var(--darkgreen-color);
+    color: var(--blue-color);
+}
+#modal_close{
+    color: #0ed4a0;
+    background-color: #0ed4a0;
+}
+#modal_close:hover{
+    background-color: var(--yellow-color);
+	box-shadow: 2px 2px 9px var(--yellow-color);
+	transition: 0.5s;
+}
 /* End Admin Page */
+
+/* ------------------------------------------------------Break Line------------------------------------------------------ */
 
 /*  start verifiction page */
 .list_group_color{
     color: red;
 }
-
 #file-chosen{
 	margin-left: 10px;
 }
-
 .upload-button{
-	/* background-color: var(--blue-color); */
-	/* color: white; */
 	padding: 10px;
 	border-radius:10px;
 	cursor: pointer;
@@ -574,3 +692,6 @@ color: var(--blue-color);
 	transition: 0.5s;
 }
 /*  End verifiction page */
+
+/* ------------------------------------------------------Break Line------------------------------------------------------ */
+

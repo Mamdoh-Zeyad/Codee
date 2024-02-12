@@ -4,25 +4,27 @@
     require_once('../includes/partials/header.php')
 ?>
 
+<!-- The content of the page -->
 <div class="signup_container h-100">
     <div class="container-fluid h-100">
         <div class="row justify-content-between h-100">
-            <div class="col-xl-4 p-3 signup_text_side d-flex align-items-center justify-content-center">
+            <div class="col-xl-4 p-3 signup_text_side d-flex align-items-center justify-content-center card_shadow">
                 <a href="home.php"><img class="signup_text_side_logo" src="../assets/img/codee-logo.png" alt="codee icon"></a> 
             </div>
             <div class="col-xl-2 p-3"></div>
             <div class="col-xl-4 p-3 d-flex align-items-center justify-content-center">
-                <form id="registrationForm" class="row g-3 needs-validation" method="post" action="../controllers/signup_controller.php" novalidate>
+                <form id="registrationForm" class="row g-3 needs-validation" method="post" 
+                    action="../controllers/signup_controller.php" novalidate>
                     <div class="form_header">
                         <p class="my_header_font">Register Your Account.</p>
                     </div>
                     <div class="col-md-6">
                         <label for="validationCustom01" class="form-label">First Name<span class="red_star">*</span></label>
-                        <input type="text" class="form-control" id="validationCustom01" placeholder="" pattern="[a-zA-Z]+" name="first_name">
+                        <input type="text" class="form-control" id="validationCustom01" name="first_name" placeholder="" pattern="[A-Za-z]+" required>
                     </div>
                     <div class="col-md-6">
                         <label for="validationCustom02" class="form-label">Last Name<span class="red_star">*</span></label>
-                        <input type="text" class="form-control" id="validationCustom02" placeholder="" pattern="[a-zA-Z]+" name="last_name" required>
+                        <input type="text" class="form-control" id="validationCustom02" name="last_name" placeholder="" pattern="[a-zA-Z]+"  required>
                     </div>
                     <div class="col-md-6">
                         <label for="validationCustom02" class="form-label">Birthdate<span class="red_star">*</span></label>
@@ -30,24 +32,26 @@
                     </div>
                     <div class="col-md-6">
                         <label for="validationCustom02" class="form-label">Nationality<span class="red_star">*</span></label>
-                        <select name="nationality" class="form-select" id="countrySelect" required>
+                        <select class="form-select" id="countrySelect" name="nationality" required>
                             <option value="" disabled selected>Select a country</option>
                         </select>
                     </div>
                     <div class="col-md-6">
                         <label for="validationCustom01" class="form-label">Email<span class="red_star">*</span></label>
-                        <input type="email" class="form-control" id="validationCustom01" placeholder="example@domain.com" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" name="email" id="email" required>
+                        <input type="email" class="form-control" id="validationCustom01" placeholder="example@domain.com" 
+                        pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" name="email" id="email" required>
                         <div class="invalid-feedback" id="emailError"></div>
                     </div>
                     <div class="col-md-6">
                         <label for="validationCustom02" class="form-label">Phone Number<span class="red_star">*</span></label>
-                        <input type="text" class="form-control" id="validationCustom02" name="phone_number" required>
+                        <input type="text" class="form-control" id="validationCustom02" name="phone_number" pattern="[0-9-]+" required>
                     </div>
                     <div class="col-md-6">
                         <label for="validationCustomUsername" class="form-label">Username<span class="red_star">*</span></label>
                         <div class="input-group has-validation">
                         <span class="input-group-text" id="inputGroupPrepend">@</span>
-                        <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" placeholder="" pattern="^[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)*$" name="username" id="username" required>
+                        <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" placeholder="" 
+                        pattern="^[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)*$" name="username" id="username" required>
                         <div class="invalid-feedback" id="usernameError">
                             Please choose a username that contains letters or numbers or underscore (_) or dot (.)
                         </div>
@@ -55,7 +59,8 @@
                     </div>
                     <div class="col-md-6">
                         <label for="validationCustom03" class="form-label">Password<span class="red_star">*</span></label>
-                        <input type="password" class="form-control" id="validationCustom03" placeholder="" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$" name="password" required>
+                        <input type="password" class="form-control" id="validationCustom03" placeholder="" 
+                        pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$" name="password" required>
                         <div class="invalid-feedback">
                             Please choose a password from 8 that contains at least one capital letter and numbers and special characters
                         </div>
@@ -96,9 +101,9 @@
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header modal_header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">CODEE Terms & Conditions</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" id="modal_close" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <p>
@@ -130,7 +135,7 @@
         </p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="my_btn2" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -138,6 +143,7 @@
 
 <!-- Scripts File -->
 <script type="text/javascript" src="../assets/js/signup.js"></script>
+<script src="../assets/js/loader.js"></script>
 
 <!--Request Footer-->
 <?php

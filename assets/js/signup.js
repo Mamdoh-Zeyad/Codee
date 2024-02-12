@@ -1,12 +1,16 @@
-// Scripts for sign up form
+/*
+  - This is a JS file for the signup.php page.
+*/
+
+//Check connection 
 console.log("Hello");
+
+/* ------------------------------------------------------Break Line------------------------------------------------------ */
+
+// Scripts for form validation. 
 (() => {
     'use strict'
-  
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
     const forms = document.querySelectorAll('.needs-validation')
-  
-    // Loop over them and prevent submission
     Array.from(forms).forEach(form => {
       form.addEventListener('submit', event => {
         if (!form.checkValidity()) {
@@ -19,36 +23,36 @@ console.log("Hello");
     })
 })()
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////
+/* ------------------------------------------------------Break Line------------------------------------------------------ */
 
+// Scripts for displaying alert when submitting the form.
 document.getElementById("registrationForm").addEventListener('submit', function(evt){
   if(window.confirm("Are you sure you want to submit the form?") == false){
       evt.preventDefault();
   }
 });
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////
+/* ------------------------------------------------------Break Line------------------------------------------------------ */
 
+// Scripts for calling country API.
 const countrySelect = document.getElementById('countrySelect');
-// Fetch country data from Rest Countries API
 fetch('https://restcountries.com/v3.1/all')
     .then(response => response.json())
     .then(countries => {
     countries.forEach(country => {
         const option = document.createElement('option');
-        option.value = country.name.common; // Use the country code as the value
+        option.value = country.name.common;
         option.textContent = `${country.name.common} (${country.cca2})`;
         countrySelect.appendChild(option);
     });
 })
 .catch(error => console.error('Error fetching countries:', error));
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////
+/* ------------------------------------------------------Break Line------------------------------------------------------ */
 
+// Scripts for validating the form.
 document.getElementById("registrationForm").addEventListener('submit', function (evt) {
-    // Check for empty fields
     var isValid = true;
-
     document.querySelectorAll('.needs-validation :required').forEach(function (field) {
         if (!field.value.trim()) {
             isValid = false;
@@ -59,7 +63,6 @@ document.getElementById("registrationForm").addEventListener('submit', function 
             field.nextElementSibling.innerHTML = '';
         }
     });
-
     if (!isValid) {
         evt.preventDefault();
         return;
@@ -69,34 +72,31 @@ $(document).ready(function () {
     // Function to check username availability
     function checkUsernameAvailability() {
         var username = $("#username").val();
-        var usernameErrorDiv = $("#usernameError"); // Get the div element for username error
-
+        var usernameErrorDiv = $("#usernameError");
         $.post("signup_controller.php", { action: "check_username", username: username }, function (data) {
             if (data === "Username already exists") {
                 $("#username").addClass('is-invalid');
-                usernameErrorDiv.html(data); // Update error message in the div
+                usernameErrorDiv.html(data);
             } else {
                 $("#username").removeClass('is-invalid');
-                usernameErrorDiv.html(''); // Clear the error message in the div
+                usernameErrorDiv.html('');
             }
         });
     }
     // Function to check email availability
     function checkEmailAvailability() {
         var email = $("#email").val();
-        var emailErrorDiv = $("#emailError"); // Get the div element for email error
-
+        var emailErrorDiv = $("#emailError");
         $.post("signup_controller.php", { action: "check_email", email: email }, function (data) {
             if (data === "Email already exists") {
                 $("#email").addClass('is-invalid');
-                emailErrorDiv.html(data); // Update error message in the div
+                emailErrorDiv.html(data);
             } else {
                 $("#email").removeClass('is-invalid');
-                emailErrorDiv.html(''); // Clear the error message in the div
+                emailErrorDiv.html('');
             }
         });
     }
-    // Trigger checks when input fields change
     $("#username").on("input", function () {
         checkUsernameAvailability();
         validateEmptyField($("#username"));
@@ -107,17 +107,12 @@ $(document).ready(function () {
         validateEmptyField($("#email"));
     });
 
-    // Handle form submission
     $("#registrationForm").submit(function (event) {
-        event.preventDefault(); // Prevent the form from submitting
+        event.preventDefault();
 
-        // Additional validation logic if needed
-
-        // Include 'nationality' in the form data
         var formData = $(this).serializeArray();
         formData.push({ name: "nationality", value: $("#countrySelect").val() });
 
-        // Check for empty fields again before submitting
         var isValid = true;
 
         formData.forEach(function (item) {
@@ -131,23 +126,18 @@ $(document).ready(function () {
                 field.next('.invalid-feedback').html('');
             }
         });
-
         if (!isValid) {
             return;
         }
-
         $.post($(this).attr("action"), formData, function (data) {
             if (data === "Success") {
-                // Redirect or show success message
                 alert('Your information has been added successfully. You will now be redirected to the login page.');
                 window.location = "../views/login.php";
             } else {
-                // Handle other error cases if needed
                 alert('Error: ' + data);
             }
         });
     });
-    // Function to validate empty fields on input change
     function validateEmptyField(field) {
         if (!field.val().trim()) {
             field.addClass('is-invalid');
@@ -158,20 +148,6 @@ $(document).ready(function () {
         }
     }
 });
-///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-window.addEventListener('load', function() {
-    // Fetch and append the loader content
-    fetch('loader.html')
-      .then(response => response.text())
-      .then(loaderContent => {
-        const loaderContainer = document.createElement('div');
-        loaderContainer.innerHTML = loaderContent;
-        document.body.appendChild(loaderContainer);
-  
-        // Fade out and remove the loader after the page loads
-        loaderContainer.addEventListener('animationend', function() {
-          this.remove();
-        });
-      });
-  });
+/* ------------------------------------------------------Break Line------------------------------------------------------ */
+

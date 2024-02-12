@@ -2,6 +2,7 @@
 <title>Codee - Catalog</title>
 <?php
     require_once('../includes/partials/header.php');
+    include("../includes/functions.php");
     session_start();
     if (isset($_SESSION['username']) && isset($_SESSION['first_name']) && isset($_SESSION['last_name'])) {
 ?>
@@ -29,27 +30,23 @@
                     }
                 ?>
             </ul>
-            <div class="text-center">
-                <span>
-                    Hello, <?php 
-                            echo $_SESSION['first_name'] . " " . $_SESSION['last_name']; 
-                            if($_SESSION['role'] === 'Admin'){
-                            header("Location: ../views/access_denied.php"); 
-                            exit();} 
-                            ?>
-                | </span> <a title="Logout" href="../controllers/logout_controller.php"><i class="fa-solid fa-right-from-bracket logout_icon"></i> </a> 
-            </div>
+            <?php
+                displayOtherDropdownMenu('Admin');
+            ?>
+            
         </div>
     </div>
 </nav>
 
+<!-- catalog content -->
 <div class="catalog_content">
     <div class="container mt-4">
-        <div class="form_header card p-3 mt-4 mb-4">
+        <div class="form_header card p-3 mt-4 mb-4 card_shadow">
             <p class="my_header_font">Developers & Consultants Catalog.</p>
             <p class="light_font">Use the services of the best programmers around the world.</p>
             <?php
-                if($_SESSION['role'] === 'Developer' && $_SESSION['status'] === "Inactive"){
+                if(($_SESSION['role'] === 'Developer' || $_SESSION['role'] === 'Consultant') && 
+                $_SESSION['status'] === "Inactive"){
                     echo "
                     <div class='container'>
                         <div class='row justify-content-start my_alert'>
@@ -64,7 +61,8 @@
                         </div>
                     </div>";
                 }
-                else if ($_SESSION['role'] === 'Developer' && $_SESSION['status'] === "Pending"){
+                else if (($_SESSION['role'] === 'Developer' || $_SESSION['role'] === 'Consultant') 
+                && $_SESSION['status'] === "Pending"){
                     echo "
                     <div class='container'>
                         <div class='row justify-content-start my_alert2'>
@@ -76,18 +74,32 @@
                         </div>
                     </div>";
                 }
+                else if (($_SESSION['role'] === 'Developer' || $_SESSION['role'] === 'Consultant') 
+                && $_SESSION['status'] === "Active"){
+                    echo "
+                    <div class='container'>
+                        <div class='row justify-content-start my_alert3'>
+                            <div class='col-8'>
+                                <p class='pt-1'>
+                                    Great news! You are an active developer now. 
+                                </p>
+                            </div>
+                        </div>
+                    </div>";
+                }
             ?>
         </div>
     </div>
 </div>
 
-<!--Start Home Page Footer-->
-<div class="home_footer">
-    <p>&copy; 2024 Codee - All Rights Reserved</p>
-</div>
+<!-- Footer -->
+<?php
+  displayFooter();
+?>
 
 <!-- Scripts File -->
 <script type="text/javascript" src="../assets/js/catalog.js"></script>
+<script type="text/javascript" src="../assets/js/loader.js"></script>
 
 <!--Request Footer-->
 <?php

@@ -1,3 +1,12 @@
+/*
+  - This is a JS file for the development_area.php page.
+*/
+
+//Check connection 
+console.log("Hello");
+
+/* ------------------------------------------------------Break Line------------------------------------------------------ */
+
 let editor;
 
 window.onload = function() {
@@ -118,19 +127,3 @@ chatInput.addEventListener("keydown", (e) => {
 sendChatBtn.addEventListener("click", handleChat);
 chatbotCloseBtn.addEventListener("click", () => document.body.classList.remove("show-chatbot"))
 chatbotToggler.addEventListener("click", () => document.body.classList.toggle("show-chatbot"))
-
-window.addEventListener('load', function() {
-    // Fetch and append the loader content
-    fetch('loader.html')
-      .then(response => response.text())
-      .then(loaderContent => {
-        const loaderContainer = document.createElement('div');
-        loaderContainer.innerHTML = loaderContent;
-        document.body.appendChild(loaderContainer);
-  
-        // Fade out and remove the loader after the page loads
-        loaderContainer.addEventListener('animationend', function() {
-          this.remove();
-        });
-      });
-  });
