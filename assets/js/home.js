@@ -26,3 +26,26 @@ function topFunction() {
 }
 
 /* ------------------------------------------------------Break Line------------------------------------------------------ */
+
+window.addEventListener('scroll', function() {
+  var logo = document.querySelector('.my_logo');
+  if (window.scrollY > 0) {
+      logo.style.maxWidth = '200px'; // Set the smaller size when scrolled
+  } else {
+      logo.style.maxWidth = '250px'; // Set the original size when not scrolled
+  }
+});
+
+/* ------------------------------------------------------Break Line------------------------------------------------------ */
+
+function toggleMode() {
+  var body = document.body;
+  var modeToggle = document.getElementById('modeToggle');
+  if (modeToggle.checked) {
+      body.classList.add('dark-mode');
+  } else {
+      body.classList.remove('dark-mode');
+  }
+}
+
+/* ------------------------------------------------------Break Line------------------------------------------------------ */

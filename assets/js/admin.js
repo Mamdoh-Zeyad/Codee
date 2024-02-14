@@ -75,8 +75,8 @@ $(document).ready(function () {
               $('#exampleModal1 input[name="programming_experience"]').val(userInfo.programming_experience);
               $('#exampleModal1 input[name="development_category"]').val(userInfo.development_category);
               $('#exampleModal1 input[name="preferd_programming_language"]').val(userInfo.preferd_programming_language);
-              $('#exampleModal1 input[name="experience"]').val(userInfo.experience);
-              $('#exampleModal1 input[name="file"]').val(userInfo.file);
+              $('#exampleModal1 textarea[name="experience"]').val(userInfo.experience);
+              $('#exampleModal1 p a').attr('href', userInfo.file);
           },
           error: function (error) {
               console.log('Error fetching user info:', error);

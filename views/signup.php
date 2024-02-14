@@ -20,11 +20,11 @@
                     </div>
                     <div class="col-md-6">
                         <label for="validationCustom01" class="form-label">First Name<span class="red_star">*</span></label>
-                        <input type="text" class="form-control" id="validationCustom01" name="first_name" placeholder="" pattern="[A-Za-z]+" required>
+                        <input type="text" class="form-control" id="validationCustom01" name="first_name" placeholder="" pattern="[a-zA-Z ]*" required>
                     </div>
                     <div class="col-md-6">
                         <label for="validationCustom02" class="form-label">Last Name<span class="red_star">*</span></label>
-                        <input type="text" class="form-control" id="validationCustom02" name="last_name" placeholder="" pattern="[a-zA-Z]+"  required>
+                        <input type="text" class="form-control" id="validationCustom02" name="last_name" placeholder="" pattern="[a-zA-Z ]*"  required>
                     </div>
                     <div class="col-md-6">
                         <label for="validationCustom02" class="form-label">Birthdate<span class="red_star">*</span></label>
@@ -44,7 +44,7 @@
                     </div>
                     <div class="col-md-6">
                         <label for="validationCustom02" class="form-label">Phone Number<span class="red_star">*</span></label>
-                        <input type="text" class="form-control" id="validationCustom02" name="phone_number" pattern="[0-9-]+" required>
+                        <input type="text" class="form-control" id="validationCustom02" name="phone_number" pattern="[0-9]+(\.[0-9]+)?" required>
                     </div>
                     <div class="col-md-6">
                         <label for="validationCustomUsername" class="form-label">Username<span class="red_star">*</span></label>

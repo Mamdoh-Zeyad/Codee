@@ -8,32 +8,46 @@
 ?>
 
 <!--Home Page Header-->
-<nav class="navbar navbar-expand-lg my_navbar">
-    <div class="container-fluid">
+<nav class="navbar my_navbar">
+    <div class="container">
         <a class="navbar-brand" href="home.php"><img class="my_logo" src="../assets/img/codee-logo.png" alt=""></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="my_btn1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
         <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center">
-                <li class="nav-item">
-                    <a class="nav-link my_nav" id="active_link" aria-current="page" href="catalog.php"><i class="fa-solid fa-users-viewfinder logout_icon"></i> Catalogue</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link my_nav" href="#"><i class="fa-solid fa-comment logout_icon"></i> Chatting</a>
-                </li>
-                <?php
-                    if($_SESSION['role'] === 'Developer'){
-                        echo "<li class='nav-item'>
-                                <a class='nav-link my_nav' href='development_area.php'><i class='fa-solid fa-code logout_icon'></i> Developement Area</a>
-                            </li>";
-                    }
-                ?>
-            </ul>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class=" text-center sidebar_body">
+            <div class="my_nav">
+            <a class="nav-link active" aria-current="page" href="#"><i class="fa-solid fa-user fa-2x"></i></a>
             <?php
                 displayOtherDropdownMenu('Admin');
             ?>
-            
+            </div>
+            <div class="my_nav">
+            <a class="nav-link active" aria-current="page" href="catalog.php"><i class="fa-solid fa-users-viewfinder fa-2x"></i></a>
+            <a class="nav-link active" aria-current="page" href="catalog.php">Catalog</a>
+            </div>
+            <div class="my_nav">
+            <a class="nav-link active" aria-current="page" href="chat.php"><i class="fa-solid fa-comment fa-2x"></i></a>
+            <a class="nav-link active" aria-current="page" href="chat.php">Chatting</a>
+            </div>
+            <?php
+                if($_SESSION['role'] === 'Developer'){
+                    echo "<div class='my_nav'>";
+                    echo "<a class='nav-link active' aria-current='page' href='development_area.php'><i class='fa-solid fa-code fa-2x'></i></a>";
+                    echo "<a class='nav-link active' aria-current='page' href='development_area.php'>Development Area</a></div>";
+                }
+            ?>
+            <div class="my_nav">
+            <a class="nav-link active" aria-current="page" href="../controllers/logout_controller.php"><i class="fa-solid fa-right-from-bracket fa-2x"></i></a>
+            <a class="nav-link active" aria-current="page" href="../controllers/logout_controller.php">Logout</a>
+            </div>
+            <div class="my_nav_toggle">
+            <label class="toggle">
+                <input type="checkbox" id="modeToggle" onclick="toggleMode()">
+                <span class="slider"></span>
+            </label>
+            </div>
+        </div>
         </div>
     </div>
 </nav>

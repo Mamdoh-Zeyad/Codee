@@ -13,11 +13,21 @@
     $file = $_POST['file'];
     $user_id = $_POST['user_id'];
 
+    // Handle File Uploads
+    $file_name = $_FILES['file']['name'];
+    $file_tmp = $_FILES['file']['tmp_name'];
+    $upload_directory = "../assets/uploads/"; // Define your upload directory
+    $destination = $upload_directory . $file_name;
+    move_uploaded_file($file_tmp, $destination);
+
+    // Save File URLs to Database
+    $file_url = "http://localhost/codee/assets/uploads/" . $file_name;
+
     // Insert data into the DB
     $sqlInsert = "INSERT INTO development_skills (Certification, country_higher_degree, Major, GPA, programming_experience, 
     development_category, preferd_programming_language,experience, file, user_id) VALUES 
     ('$Certification', '$country_higher_degree', '$Major', '$GPA', '$programming_experience', 
-    '$development_category', '$preferd_programming_language','$experience','$file', $user_id)";
+    '$development_category', '$preferd_programming_language','$experience','$file_url', $user_id)";
 
     $sqlAlter = "UPDATE users SET status = 'Pending' WHERE id = $user_id";
 

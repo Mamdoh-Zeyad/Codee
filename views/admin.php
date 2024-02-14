@@ -7,17 +7,35 @@
     if (isset($_SESSION['username']) && isset($_SESSION['first_name']) && isset($_SESSION['last_name'])) {
 ?>
 <!--Home Page Header-->
-<nav class="navbar navbar-expand-lg my_navbar">
-    <div class="container-fluid">
+<nav class="navbar my_navbar">
+    <div class="container">
         <a class="navbar-brand" href="home.php"><img class="my_logo" src="../assets/img/codee-logo.png" alt=""></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="my_btn1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
         <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center"></ul>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class=" text-center sidebar_body">
+            <div class="my_nav">
+            <a class="nav-link active" aria-current="page" href="#"><i class="fa-solid fa-user fa-2x"></i></a>
             <?php
                 displayAdminDropdownMenu('Admin');
             ?>
+            </div>
+            <div class="my_nav">
+            <a class="nav-link active" aria-current="page" href="#home"><i class="fa-solid fa-house fa-2x"></i></a>
+            <a class="nav-link active" aria-current="page" href="#home">Home</a>
+            </div>
+            <div class="my_nav">
+            <a class="nav-link active" aria-current="page" href="../controllers/logout_controller.php"><i class="fa-solid fa-right-from-bracket fa-2x"></i></a>
+            <a class="nav-link active" aria-current="page" href="../controllers/logout_controller.php">Logout</a>
+            </div>
+            <div class="my_nav_toggle">
+            <label class="toggle">
+                <input type="checkbox" id="modeToggle" onclick="toggleMode()">
+                <span class="slider"></span>
+            </label>
+            </div>
+        </div>
         </div>
     </div>
 </nav>
@@ -190,7 +208,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header modal_header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Edit User's Information.</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="fa-solid fa-pen-to-square"></i> Edit User's Information</h1>
                 <button type="button" id="modal_close" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -245,12 +263,12 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header modal_header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Verify User.</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="fa-solid fa-person-circle-check"></i> Verify User</h1>
                 <button type="button" id="modal_close" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
             <form id="registrationForm" class="row g-3 needs-validation" method="post" action="../controllers/admin/approve_user.php" novalidate>
-                    <div class="col-md-6" hidden>
+                    <div class="col-md-6">
                         <label for="validationCustom01" class="form-label">User ID</label>
                         <input type="text" class="form-control" name="user_id" required readonly>
                     </div>
@@ -282,15 +300,16 @@
                         <label for="validationCustom01" class="form-label">Programming Language</label>
                         <input type="text" class="form-control" id="validationCustom01" name="preferd_programming_language" required>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <label for="validationCustom01" class="form-label">Experience</label>
-                        <input type="text" class="form-control" id="validationCustom01" name="experience" required>
+                        <textarea class="form-control" id="floatingTextarea2" 
+                        style="height: 100px" name="experience" required></textarea>
                     </div>
                     <div class="col-md-6">
-                        <label for="validationCustom01" class="form-label">Files</label>
-                        <input type="text" class="form-control" id="validationCustom01" name="file" required>
+                        
                     </div>
                     <div class="modal-footer col-12">
+                    <p><a class="forget_password" target="_blank" href=""><i class="fa-solid fa-eye"></i> View CV</a></p>
                         <button type="submit" class="my_btn1 float-end">Approve</button>
                         <button type="button" class="my_btn2" data-bs-dismiss="modal">Close</button>
                     </div>

@@ -10,34 +10,46 @@
 ?>
 
 <!--Home Page Header-->
-<nav class="navbar navbar-expand-lg my_navbar">
-    <div class="container-fluid">
+<nav class="navbar my_navbar">
+    <div class="container">
         <a class="navbar-brand" href="home.php"><img class="my_logo" src="../assets/img/codee-logo.png" alt=""></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+        <button class="my_btn1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+        <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center">
-                <li class="nav-item">
-                    <a class="nav-link my_nav" id="active_link" aria-current="page" href="catalog.php">
-                        <i class="fa-solid fa-users-viewfinder logout_icon"></i> Catalogue</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link my_nav" href="#"><i class="fa-solid fa-comment logout_icon"></i> Chatting</a>
-                </li>
-                <?php
-                    if($_SESSION['role'] === 'Developer'){
-                        echo "<li class='nav-item'>
-                                <a class='nav-link my_nav' href='development_area.php'>
-                                <i class='fa-solid fa-code logout_icon'></i> Developement Area</a>
-                            </li>";
-                    }
-                ?>
-            </ul>
-            <?php 
-                displayDevConDropdownMenu('Developer', 'Consultant') 
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class=" text-center sidebar_body">
+            <div class="my_nav">
+            <a class="nav-link active" aria-current="page" href="#"><i class="fa-solid fa-user fa-2x"></i></a>
+            <?php
+                displayDevConDropdownMenu('Developer', 'Consultant');
             ?>
+            </div>
+            <div class="my_nav">
+            <a class="nav-link active" aria-current="page" href="catalog.php"><i class="fa-solid fa-users-viewfinder fa-2x"></i></a>
+            <a class="nav-link active" aria-current="page" href="catalog.php">Catalog</a>
+            </div>
+            <div class="my_nav">
+            <a class="nav-link active" aria-current="page" href="chat.php"><i class="fa-solid fa-comment fa-2x"></i></a>
+            <a class="nav-link active" aria-current="page" href="chat.php">Chatting</a>
+            </div>
+            <?php
+                if($_SESSION['role'] === 'Developer'){
+                    echo "<div class='my_nav'>";
+                    echo "<a class='nav-link active' aria-current='page' href='development_area.php'><i class='fa-solid fa-code fa-2x'></i></a>";
+                    echo "<a class='nav-link active' aria-current='page' href='development_area.php'>Development Area</a></div>";
+                }
+            ?>
+            <div class="my_nav">
+            <a class="nav-link active" aria-current="page" href="../controllers/logout_controller.php"><i class="fa-solid fa-right-from-bracket fa-2x"></i></a>
+            <a class="nav-link active" aria-current="page" href="../controllers/logout_controller.php">Logout</a>
+            </div>
+            <div class="my_nav_toggle">
+            <label class="toggle">
+                <input type="checkbox" id="modeToggle" onclick="toggleMode()">
+                <span class="slider"></span>
+            </label>
+            </div>
+        </div>
         </div>
     </div>
 </nav>
@@ -131,7 +143,7 @@
             <div class="col-xl-2 p-3"></div>
             <div class="col-xl-8 p-3 d-flex align-items-center justify-content-center card mb-4 card_shadow">
                 <form id="skillsForm" class="row g-3 needs-validation" method="post"
-                    action="../controllers/verifiction_controller.php" novalidate>
+                    action="../controllers/verifiction_controller.php" novalidate enctype="multipart/form-data">
                     <div class="form_header mb-1">
                         <p class="my_header_font mt-4">Education & Development Skills</p>
                     </div>
@@ -204,52 +216,28 @@
                             <label for="floatingTextarea2">ex: write about your programming languages, certifications you have etc.</label>
                         </div>
                     </div>
-                    <div class="col-md-4 mb-3">
+                    <div class="col-md-5">
                         <label hidden for="validationCustom01" class="form-label">ID<span
                                 class="red_star"> (readonly)</span></label>
                         <input hidden type="text" class="form-control" id="validationCustom01" placeholder=""
                             value="<?php echo $_SESSION['id']?>" pattern="[a-zA-Z]+" name="user_id"
                             required readonly>
+                            <h6>Please Upload the following files: </h3>
+                            <ul>
+                                <li><label for="file" class="">Your CV as a PDF file</label><span class="red_star">*</span></li>
+                            </ul>
+                            
                     </div>
-                <!-- </form>   -->
-            </div>
-            <div class="col-xl-2 p-3"></div>
-        </div>
-    </div>
-</div>
-
-<!-- 4th section -->
-<div class="signup-container">
-    <div class="container-fluid">
-        <div class="row justify-content-between">
-            <div class="col-xl-2 p-3"></div>
-
-            <div class="col-xl-8 p-3 card mb-4 card_shadow">
-                <div class="row g-3">
-                    <div class="form_header mb-1 col-12 ps-5">
-                        <p class="my_header_font mt-4 ">Submit Your Form</p>
-                    </div>
-
-                    <div class="col-md-7 text-align-center ps-5">
-                        <label for="file" class="list_group_color">Please upload the following files:</label>
-                        <ul class="ps-4 mt-2 files list-group">
-                            <li class="certification">Higher degree certification. </li>
-                            <li class="cv">Your CV.</li>
-                            <li class="any_certifications">Any development certifications you have.</li>
-                        </ul>
-                    </div>
-
-                    <div class="col-md-5 mt-3">
-                        <div class="upload-container">
+                    <div class="col-md-7 ">
+                        <div class="upload-container float-end">
+                        <span id="file-chosen">No file chosen</span>
                             <input type="file" name="file" id="file" hidden>
                             <label class="upload-button" for="file">  <i class="fa-solid fa-arrow-up-from-bracket"></i> Upload Files</label>
-                            <span id="file-chosen">No file chosen</span>
+                            <button class="upload-button" type="submit">Submit</button>
                         </div>
-                        <button class="my_btn1 mt-3 btn-lg col-9" type="submit">Submit</button>
                     </div>
-                </div>
+                </form>  
             </div>
-
             <div class="col-xl-2 p-3"></div>
         </div>
     </div>
