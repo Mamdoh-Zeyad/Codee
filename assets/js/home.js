@@ -49,3 +49,18 @@ function toggleMode() {
 }
 
 /* ------------------------------------------------------Break Line------------------------------------------------------ */
+
+// Get the navbar element
+var navbar = document.querySelector('.my_navbar');
+
+// Function to toggle the background color of the navbar
+function toggleNavbarBackground() {
+    if (window.scrollY > 0) { // Check if user has scrolled
+        navbar.classList.add('scrolled'); // Add the 'scrolled' class
+    } else {
+        navbar.classList.remove('scrolled'); // Remove the 'scrolled' class
+    }
+}
+
+// Add scroll event listener to window
+window.addEventListener('scroll', toggleNavbarBackground);

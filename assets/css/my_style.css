@@ -34,7 +34,6 @@ body, html{
 	height: 100%;
 	margin: 0;
 	padding: 0;
-    transition: background-color 0.3s ease;
 }
 
 /* Scroll to Top*/
@@ -135,7 +134,10 @@ body, html{
 	color: white;
     box-shadow: var(--box-shadw2);
 }
-.my_navbar{
+.my_navbar2{
+    background-image: url(../img/wp8778447.jpg);
+}
+.scrolled {
     background-image: url(../img/wp8778447.jpg);
 }
 .my_logo{
@@ -255,7 +257,6 @@ body, html{
 	border: 2px var(--blue-color) solid;
 }
 .my_figure{
-	/* background-color: var(--darkgreen-color); */
     background-image: url(../img/wp8778447.jpg);
 	color:var(--blue-color);
 	font-weight: bold
@@ -265,15 +266,9 @@ body, html{
 }
 .my_IconeColor{
 	color: var(--yellow-color);
-    /* border-radius: 100px;
-    border: 1px solid silver;
-    padding: 40px; */
 }
 .my_IconeColor2{
     color: var(--blue-color);
-    /* border-radius: 100px;
-    border: 1px solid silver;
-    padding: 40px; */
 }
 .img_size{
     width: 200px;
@@ -343,8 +338,6 @@ body, html{
 	color: var(--blue-color);
     padding-top: 25px;
     padding-bottom: 25px;
-    /* background-color: red; */
-    /* border-bottom: 0.2px solid silver; */
     border-top: 0.2px solid silver;
 
 }
@@ -356,7 +349,6 @@ body, html{
 .my_nav:hover{
     box-shadow: 2px 2px 9px var(--yellow-color);
     color: #FFF;
-	/* transition: 0.2s; */
 	background-color: var(--yellow-color);
 }
 .toggle {
@@ -412,11 +404,12 @@ input:checked + .slider:before {
 
 /* Start Signup Page */
 .signup_text_side{
-	background-color: var(--darkgreen-color);
+    background-image: url(../img/wp8778447.jpg);
 	text-align: center;
+    border-radius: 10px;
 }
 .signup_text_side_logo{
-	width: 90%;
+	width: 100%;
 }
 .my_header_font{
 	color: var(--blue-color);
@@ -438,6 +431,9 @@ input:checked + .slider:before {
 }
 .forget_password:hover{
 	color: var(--yellow-color);
+}
+.login_body{
+    background-image: url(../img/laptop2.jpg);
 }
 /* End Login Page */
 
@@ -720,13 +716,14 @@ input:checked + .slider:before {
 /* Start Access Denied Page */
 .access_denied_body {
     text-align: center;
-    background-color: var(--darkgreen-color);
+    background-image: url(../img/laptop2.jpg);
     display: flex;
     justify-content: center;
     align-items: center; 
     min-height: 100vh;
 }
 .access_denied_container {
+    background-image: url(../img/wp8778447.jpg);;
     width: 50%;
     padding: 30px; 
     border-radius: 10px;

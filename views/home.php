@@ -3,7 +3,7 @@
   require_once('../includes/partials/header.php');
   include("../includes/functions.php");
 ?>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
 
 <div class="header">
   <!-- Navbaer -->
@@ -49,7 +49,7 @@
           </div>
       </div>
   </nav>
-  <div class="header_caption d-md-block" id="home">
+  <div class="header_caption d-md-block animate__animated animate__fadeInUp" id="home">
     <img src="../assets/img/codee-logo - Copy.png" alt="Logo" class="caption_logo">
     <p class="header_caption_font1">WE <span class="header_caption_blueFont">PROGRAM</span> THINGS</p> 
     <p class="header_lead">
@@ -65,14 +65,14 @@
   </div>
 </div>
 
-<div class="About py-5 animate__animated">
+<div class="About py-5">
   <div class="container">
     <h3 class="sections_headers" id="About">About</h3>
     <hr class="my_hr">
     <div class="container">
       <div class="row align-items-center">
         <!-- Left Section -->
-        <div class="col-md-4 slider-text animate__animated animate__fadeInLeft">
+        <div class="col-md-4 slider-text">
         <div class=" h-100 text-center pt-4">
           <i class="fa-solid fa-calendar-days fa-3x my_IconeColor2"></i>
           <div class="card-body p-2">
@@ -82,7 +82,7 @@
         </div>
         </div>
         <!-- center Section -->
-        <div class="col-md-4 slider-text animate__animated animate__fadeInUp">
+        <div class="col-md-4 slider-text">
         <div class=" h-100 text-center pt-4 ">
           <i class="fa-solid fa-trophy fa-3x my_IconeColor"></i>
           <div class="card-body p-2">
@@ -95,7 +95,7 @@
         </div>
         </div>
         <!-- Right Section -->
-        <div class="col-md-4 slider-text animate__animated animate__fadeInRight">
+        <div class="col-md-4 slider-text">
           <div class=" h-100 text-center pt-4">
             <i class="fa-solid fa-hourglass-start fa-3x my_IconeColor2"></i>
             <div class="card-body p-2">
@@ -119,7 +119,7 @@
     <div class="container">
       <div class="row align-items-center">
         <!-- Left Section -->
-        <div class="col-md-4 slider-text animate__animated animate__fadeInLeft">
+        <div class="col-md-4 slider-text">
         <div class="text-center">
           <img src="../assets/img/chatting.png" class="img_size pt-4" alt="...">
           <div class="card-body p-2">
@@ -129,7 +129,7 @@
         </div>
       </div>
         <!-- center Section -->
-        <div class="col-md-4 slider-text animate__animated animate__fadeInUp">
+        <div class="col-md-4 slider-text">
         <div class="text-center">
           <img src="../assets/img/Consultant.png" class="img_size pt-4" alt="...">
           <div class="card-body p-2">
@@ -139,7 +139,7 @@
         </div>
       </div>
         <!-- Right Section -->
-        <div class="col-md-4 slider-text animate__animated animate__fadeInRight">
+        <div class="col-md-4 slider-text">
         <div class="text-center">
           <img src="../assets/img/environments.png" class="img_size pt-4" alt="...">
           <div class="card-body p-2">
@@ -167,14 +167,14 @@
 </figure>
 
 <!-- Workflow -->
-<div class="About py-5 animate__animated">
+<div class="About py-5">
   <div class="container">
     <h3 class="sections_headers" id="Workflow">Workflow</h3>
     <hr class="my_hr">
     <div class="container">
       <div class="row align-items-center My-font-family">
         <!-- Left Section -->
-        <div class="col-md-3 slider-text animate__animated animate__fadeInUp">
+        <div class="col-md-3 slider-text">
         <div class="text-center">
               <i class="my_IconeColor fa-regular fa-address-card fa-3x  p-2"></i>
               <div class="card-body text-center p-2">
@@ -185,7 +185,7 @@
           </div>
       </div>
       <!-- center one Section -->
-      <div class="col-md-3 slider-text animate__animated animate__fadeInUp">
+      <div class="col-md-3 slider-text">
         <div class="text-center">
               <i class="my_IconeColor2 fa-solid fa-user fa-3x p-2"></i>
               <div class="card-body text-center p-2">
@@ -196,7 +196,7 @@
           </div>
       </div>
       <!-- center two Section -->
-      <div class="col-md-3 slider-text animate__animated animate__fadeInUp">
+      <div class="col-md-3 slider-text">
         <div class=" text-center ">
             <i class="my_IconeColor fa-solid fa-list fa-3x p-2"></i>
             <div class="card-body text-center p-2">
@@ -207,7 +207,7 @@
         </div>
       </div>
       <!-- Right Section -->
-      <div class="col-md-3 slider-text animate__animated animate__fadeInUp">
+      <div class="col-md-3 slider-text">
         <div class=" text-center ">
             <i class="my_IconeColor2 fa-solid fa-comments fa-3x p-2"></i>
             <div class="card-body text-center p-2">
@@ -221,44 +221,6 @@
   </div>
 </div>
         
-<!-- Contact Us -->
-<!-- <h3 class="text-center space_section" id="ContactUs"><strong>Contact Us</strong></h3>
-<div class="container-fluid About pb-4">
-  <div class="row justify-content-center pt-4">
-    <div class="col-md-4">
-      <form id="contact_form" class="needs-validation" method="post" action="../controllers/contact_us_controller.php" novalidate>
-        <div class="mb-3">
-          <label for="validationCustom01" class="form-label">Full Name<span class="red_star">*</span></label>
-          <input type="text" class="form-control form-control-sm" id="validationCustom01" placeholder="Your full name" name="full_name" required>
-          <div class="valid-feedback">Looks good!</div>
-        </div>
-
-        <div class="mb-3">
-          <label for="validationCustom02" class="form-label">Email<span class="red_star">*</span></label>
-          <input type="email" class="form-control form-control-sm" id="validationCustom02" placeholder="example@domain.com" name="email" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" required>
-        </div>
-
-        <div class="mb-3">
-          <label for="validationCustom03" class="form-label">Phone Number<span class="red_star">*</span></label>
-          <div class="input-group has-validation">
-            <input type="text" class="form-control form-control-sm" id="validationCustom03" placeholder="00965xxxxxxxx" name="phone_number" pattern="[0-9]+" required>
-          </div>
-        </div>
-
-        <div class="mb-3">
-          <label for="validationTextarea" class="form-label">Comments<span class="red_star">*</span></label>
-          <textarea class="form-control form-control-sm" id="validationTextarea" placeholder="Start Writing..." rows="5" name="comments" required></textarea>
-          <div class="invalid-feedback">Please enter a message in the comment section.</div>
-        </div>
-
-        <div class="text-center">
-          <button class="my_btn1 w-50" type="submit">Send</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div> -->
-
 <!-- Footer -->
 <?php
   displayFooter();
@@ -267,12 +229,8 @@
 <!-- Top function -->
 <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa-solid fa-angles-up"></i></button>
 
-<a href="https://wa.me/966545219170" class="whatsapp_icon_contianer" target="_blank">
-  <i class="fa-brands fa-whatsapp whatsapp_icon"></i></a>
-
 <!-- Scripts File -->
 <script src="../assets/js/home.js"></script>
-<script src="../assets/js/loader.js"></script>
 
 <!--Request Footer-->
 <?php

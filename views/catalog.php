@@ -8,7 +8,7 @@
 ?>
 
 <!--Home Page Header-->
-<nav class="navbar my_navbar">
+<nav class="navbar my_navbar2">
     <div class="container">
         <a class="navbar-brand" href="home.php"><img class="my_logo" src="../assets/img/codee-logo.png" alt=""></a>
         <button class="my_btn1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
