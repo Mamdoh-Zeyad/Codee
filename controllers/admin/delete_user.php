@@ -6,6 +6,9 @@
         // Sanitize the input to prevent SQL injection
         $id = mysqli_real_escape_string($conn, $_GET['id']);
 
+        $deleteSkillsQuery = "DELETE FROM development_skills WHERE user_id = '$id'";
+        mysqli_query($conn, $deleteSkillsQuery);
+
         $deleteQuery = "DELETE FROM users WHERE id = '$id'";
         mysqli_query($conn, $deleteQuery);
 
