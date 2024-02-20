@@ -22,9 +22,19 @@
         $result_email = $conn->query($check_query_email);
 
         if ($result_username->num_rows > 0) {
-            echo "Username already exists";
+            ?>
+                <script type="text/javascript"> 
+                    alert('Username already exists.'); 
+                    window.location = "../views/signup.php";
+                </script> 
+            <?php
         } else if ($result_email->num_rows > 0) {
-            echo "Email already exists";
+            ?>
+                <script type="text/javascript"> 
+                    alert('Email already exists.'); 
+                    window.location = "../views/signup.php";
+                </script> 
+            <?php
         } else {
             // Insert data into the DB
             $sql = "INSERT INTO users (first_name, last_name, birthdate, nationality, email, phone_number, username, password, role, status) VALUES 
@@ -32,7 +42,12 @@
 
             // Check if the data inserted or not
             if ($conn->query($sql) === TRUE) {
-                echo "Success"; // Send success response
+                ?>
+                    <script type="text/javascript"> 
+                        alert('Your information has been added successfully. You will now be redirected to the login page.'); 
+                        window.location = "../views/login.php";
+                    </script> 
+                <?php
             } else {
                 echo "Error: " . $sql . "<br>" . $conn->error;
             }

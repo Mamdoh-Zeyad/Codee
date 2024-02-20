@@ -4,10 +4,10 @@
     */
 
     //Functions to display the dropdown menu in the navbar
-    function displayAdminDropdownMenu($str){
+    function displayAdminDropdownMenu($admin, $owner){
         echo "<span>";
         echo $_SESSION['first_name'] . " " . $_SESSION['last_name']; 
-        if($_SESSION['role'] != $str){
+        if($_SESSION['role'] != $admin && $_SESSION['role'] != $owner){
             header("Location: ../views/access_denied.php"); 
             exit();
         }

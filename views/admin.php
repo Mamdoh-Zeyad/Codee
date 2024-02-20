@@ -18,12 +18,12 @@
             <div class="my_nav">
             <a class="nav-link active" aria-current="page" href="#"><i class="fa-solid fa-user fa-2x"></i></a>
             <?php
-                displayAdminDropdownMenu('Admin');
+                displayAdminDropdownMenu('Admin', 'Owner');
             ?>
             </div>
             <div class="my_nav">
-            <a class="nav-link active" aria-current="page" href="#home"><i class="fa-solid fa-house fa-2x"></i></a>
-            <a class="nav-link active" aria-current="page" href="#home">Home</a>
+            <a class="nav-link active" aria-current="page" href="home.php"><i class="fa-solid fa-house fa-2x"></i></a>
+            <a class="nav-link active" aria-current="page" href="home.php">Home</a>
             </div>
             <div class="my_nav">
             <a class="nav-link active" aria-current="page" href="../controllers/logout_controller.php"><i class="fa-solid fa-right-from-bracket fa-2x"></i></a>
@@ -58,6 +58,12 @@
         <div class="col-xl-12">
             <div class="card card_shadow">
                 <div class="card-body">
+                    <?php
+                        if($_SESSION['role'] == 'Owner'){
+                            echo '<button data-bs-toggle="modal" data-bs-target="#exampleModal3" type="submit" 
+                            class="my_btn1 p-2 ps-3 pe-3 mb-3">Create New Admin</button>';
+                        }
+                    ?>
                     <div class="table-responsive">
                         <table class="table table-bordered verticle-middle text-center">
                             <thead>
@@ -311,6 +317,81 @@
                     <div class="modal-footer col-12">
                     <p><a class="forget_password" target="_blank" href=""><i class="fa-solid fa-eye"></i> View CV</a></p>
                         <button type="submit" class="my_btn1 float-end">Approve</button>
+                        <button type="button" class="my_btn2" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- New Admin Modal -->
+<div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header modal_header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="fa-solid fa-pen-to-square"></i> Edit User's Information</h1>
+                <button type="button" id="modal_close" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="registrationForm" class="row g-3 needs-validation" method="post" 
+                    action="../controllers/admin/create_admin.php" novalidate>
+                    <div class="col-md-6">
+                        <label for="validationCustom01" class="form-label">First Name<span class="red_star">*</span></label>
+                        <input type="text" class="form-control" id="validationCustom01" name="first_name" placeholder="" pattern="[a-zA-Z ]*" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="validationCustom02" class="form-label">Last Name<span class="red_star">*</span></label>
+                        <input type="text" class="form-control" id="validationCustom02" name="last_name" placeholder="" pattern="[a-zA-Z ]*"  required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="validationCustom02" class="form-label">Birthdate<span class="red_star">*</span></label>
+                        <input type="date" class="form-control" id="validationCustom02" name="birthdate" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="validationCustom02" class="form-label">Nationality<span class="red_star">*</span></label>
+                        <select class="form-select" id="countrySelect" name="nationality" required>
+                            <option value="" disabled selected>Select a country</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="validationCustom01" class="form-label">Email<span class="red_star">*</span></label>
+                        <input type="email" class="form-control" id="validationCustom01" placeholder="example@domain.com" 
+                        pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" name="email" id="email" required>
+                        <div class="invalid-feedback" id="emailError"></div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="validationCustom02" class="form-label">Phone Number<span class="red_star">*</span></label>
+                        <input type="text" class="form-control" id="validationCustom02" name="phone_number" pattern="[0-9]+(\.[0-9]+)?" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="validationCustomUsername" class="form-label">Username<span class="red_star">*</span></label>
+                        <div class="input-group has-validation">
+                        <span class="input-group-text" id="inputGroupPrepend">@</span>
+                        <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" placeholder="" 
+                        pattern="^[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)*$" name="username" id="username" required>
+                        <div class="invalid-feedback" id="usernameError">
+                            Please choose a username that contains letters or numbers or underscore (_) or dot (.)
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="validationCustom03" class="form-label">Password<span class="red_star">*</span></label>
+                        <input type="password" class="form-control" id="validationCustom03" placeholder="" 
+                        pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$" name="password" required>
+                        <div class="invalid-feedback">
+                            Please choose a password from 8 that contains at least one capital letter and numbers and special characters
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <label for="validationCustom02" class="form-label">Role<span class="red_star">*</span></label>
+                        <input type="text" name="role" class="form-control" id="validationCustom02" value="Admin" readonly>
+                        <!-- <select name="role" class="form-select" id="validationCustom02" required>
+                            <option value="Admin">Admin</option>
+                        </select> -->
+                    </div>
+                    <div class="modal-footer col-12">
+                        <button type="submit" class="my_btn1 float-end">Create Admin</button>
                         <button type="button" class="my_btn2" data-bs-dismiss="modal">Close</button>
                     </div>
                 </form>
