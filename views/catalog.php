@@ -106,6 +106,102 @@
     </div>
 </div>
 
+<div class="container">
+    <div class="row">
+        <?php
+        // Include your existing database connection file
+        include("../includes/mysql_inti.php");
+
+        // Define the number of rows to display per page
+        $rowsPerPage = 6;
+
+        // Calculate the offset based on the current page
+        $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
+        $offset = ($page - 1) * $rowsPerPage;
+
+        // SQL query to include LIMIT and OFFSET
+        $sql = "SELECT users.first_name, users.last_name, development_skills.development_category, development_skills.preferd_programming_language
+                FROM users
+                INNER JOIN development_skills ON users.id = development_skills.user_id
+                WHERE users.status = 'Active'
+                LIMIT $offset, $rowsPerPage";
+
+        // Execute the query and fetch results
+        $result = mysqli_query($conn, $sql);
+
+        // Check for errors
+        if (!$result) {
+            echo "Error executing query: " . mysqli_error($conn);
+            exit;
+        }
+
+        // Loop through results and print inside a card
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo '<div class="col-md-4 mb-4 ">';
+            echo '<div class="card card_shadow">';
+            echo '<div class="card-body">';
+            //echo '<div class="card-body" style="padding: 7px;">';
+            echo '<div class="card-img-top my_navbar2 text-white" style="height: 200px;"><i class="fa-solid fa-user-circle" style="font-size: 167px;"></i></div>';
+            echo '<hr class="my_hr">'; // Add the .my_hr class here
+            echo '<h2 class="card-title header_caption_blueFont">' . $row['first_name'] . ' ' . $row['last_name'] . '</h2>';
+            echo '<p class="card-text">' . $row['development_category'] . ' / ' . $row['preferd_programming_language'] . '</p>';
+            echo '<div class="d-flex align-items-center justify-content-end">';
+            echo '<a href="#" class="me-2 text-decoration-none text-dark my_btn1">Direct Chat <i class="fa-solid fa-comment my_IconeColor2"></i></a>';
+            echo '</div>';
+            echo '</div>'; // Close card-body
+            echo '</div>'; // Close card
+            echo '</div>'; // Close col-md-4
+        }
+
+        // Reopen the connection for the count query
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+
+        // Calculate total number of rows
+        $countSql = "SELECT COUNT(*) as total FROM users WHERE status = 'Active'";
+        $countResult = mysqli_query($conn, $countSql);
+        $countRow = mysqli_fetch_assoc($countResult);
+        $totalRows = $countRow['total'];
+
+        // Close the connection
+        mysqli_close($conn);
+        ?>
+    </div>
+
+    <!-- Pagination links -->
+    <div class="row">
+        <div class="col">
+            <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-center">
+                    <?php
+                    // Calculate total number of pages
+                    $totalPages = ceil($totalRows / $rowsPerPage);
+
+                     // Display "Go to First Page" button
+                     echo '<li class="page-item">';
+                     echo '<a class="page-link" href="?page=1" aria-label="First">';
+                     echo '<span aria-hidden="true">&laquo;&laquo;</span>';
+                     echo '</a>';
+                     echo '</li>';
+
+                    // Display pagination links
+                    for ($i = 1; $i <= $totalPages; $i++) {
+                        echo '<li class="page-item ' . ($page == $i ? 'active' : '') . '">';
+                        echo '<a class="page-link" href="?page=' . $i . '">' . $i . '</a>';
+                        echo '</li>';
+                    }
+                    
+                     // Display "Go to Last Page" button
+                     echo '<li class="page-item">';
+                     echo '<a class="page-link" href="?page=' . $totalPages . '" aria-label="Last">';
+                     echo '<span aria-hidden="true">&raquo;&raquo;</span>';
+                     echo '</a>';
+                     echo '</li>';
+                    ?>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
 <!-- Footer -->
 <?php
   displayFooter();

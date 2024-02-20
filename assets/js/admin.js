@@ -34,7 +34,8 @@ $(document).ready(function () {
 
         // AJAX request to fetch user info by ID
         $.ajax({
-            url: 'http://localhost/codee/controllers/admin/fetch_user_info.php', // Change this to the actual PHP file to fetch user info
+            url: 'http://localhost/codee/codee/controllers/admin/fetch_user_info.php', // Change this to the actual PHP file to fetch user info
+            // url: 'http://localhost/codee/controllers/admin/fetch_user_info.php', // Change this to the actual PHP file to fetch user info
             method: 'POST',
             data: { id: userId },
             success: function (response) {
@@ -62,7 +63,8 @@ $(document).ready(function () {
     $('.verify_icon').on('click', function () {
       var userId = $(this).data('id');
       $.ajax({
-          url: 'http://localhost/codee/controllers/admin/fetch_request_info.php', // Change this to the actual PHP file to fetch user info
+          url: 'http://localhost/codee/codee/controllers/admin/fetch_request_info.php', // Change this to the actual PHP file to fetch user info
+        //   url: 'http://localhost/codee/controllers/admin/fetch_user_info.php', // Change this to the actual PHP file to fetch user info
           method: 'POST',
           data: { id: userId },
           success: function (response) {
