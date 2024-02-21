@@ -434,6 +434,7 @@ input:checked + .slider:before {
 }
 .login_body{
     background-image: url(../img/laptop2.jpg);
+    min-height: -webkit-fill-available;
 }
 /* End Login Page */
 

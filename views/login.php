@@ -4,7 +4,7 @@
     require_once('../includes/partials/header.php')
 ?>
 <!-- The content of the page -->
-<div class="login_body h-100 d-flex justify-content-center align-items-center">
+<div class="login_body d-flex justify-content-center align-items-center">
     <div class="container  d-flex justify-content-center align-items-center">
         <div class="col-md-8 animate__animated">
             <div class=" login_container animate__animated animate__fadeInLeft">

@@ -5,8 +5,8 @@
 ?>
 
 <!-- The content of the page -->
-<div class="login_body h-100 d-flex justify-content-center align-items-center">
-    <div class="container  d-flex justify-content-center align-items-center">
+<div class="login_body d-flex justify-content-center align-items-center">
+    <div class="container d-flex justify-content-center align-items-center">
         <div class="col-md-12 animate__animated">
             <div class=" login_container animate__animated animate__fadeInLeft">
                 <div class="container-fluid">
