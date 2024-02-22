@@ -1,12 +1,12 @@
-<!--Request Header-->
-<title>Codee - Development Area</title>
+<title>Codee - Users</title>
 <?php
     require_once('../includes/partials/header.php');
     include("../includes/functions.php");
+    include("../includes/mysql_inti.php");
     session_start();
-    if (isset($_SESSION['username']) && isset($_SESSION['first_name']) && isset($_SESSION['last_name'])) {
+    if (isset($_SESSION['username']) && isset($_SESSION['first_name']) && 
+    isset($_SESSION['last_name']) && isset($_SESSION['chat_status'])) {
 ?>
-
 <!--Home Page Header-->
 <nav class="navbar my_navbar2">
     <div class="container">
@@ -19,7 +19,7 @@
             <div class="my_nav">
             <a class="nav-link active" aria-current="page" href="#"><i class="fa-solid fa-user fa-2x"></i></a>
             <?php
-                displayDevDropdownMenu('Developer');
+                displayOtherDropdownMenu('Admin');
             ?>
             </div>
             <div class="my_nav">
@@ -27,8 +27,8 @@
             <a class="nav-link active" aria-current="page" href="catalog.php">Catalog</a>
             </div>
             <div class="my_nav">
-            <a class="nav-link active" aria-current="page" href="../chat/users.php"><i class="fa-solid fa-comment fa-2x"></i></a>
-            <a class="nav-link active" aria-current="page" href="../chat/users.php">Chatting</a>
+            <a class="nav-link active" aria-current="page" href="../ChatApp/users.php"><i class="fa-solid fa-comment fa-2x"></i></a>
+            <a class="nav-link active" aria-current="page" href="../ChatApp/users.php">Chatting</a>
             </div>
             <?php
                 if($_SESSION['role'] === 'Developer'){
@@ -52,45 +52,43 @@
     </div>
 </nav>
 
-<!-- content -->
-<div class="container">
-    <div class="IDEheader mt-4 card_shadow"> Codeboard Online IDE </div>
-    <div class="language-container card_shadow">
-        <label for="languages" class="language-label">Select Language:</label>
-        <select id="languages" class="form-select smaller-select" aria-label=".form-select-sm example" onchange="changeLanguage()">
-            <option value="php"> PHP </option>
-            <option value="python"> Python </option>
-            <option value="node"> Node JS </option>
-            <option value="java"> Java </option>
-            <option value="c"> C </option>
-            <option value="cpp"> C++ </option>
-        </select>
-        <button class="btnIDE ms-auto" onclick="executeCode()"> Run </button>
-    </div>
-    <div class="editor card_shadow" id="editor"></div>
-    <div class="labelOutput card_shadow"> Output </div>
-    <div class="output mb-4 card_shadow"></div>
-    </div>  
-    <!-- chatbot -->
-    <button class="chatbot-toggler card_shadow">
-    <span class="material-icons"><i class="fa-brands fa-rocketchat"></i></span>
-    <span class="material-icons">close</span>
-    </button>
-    <div class="chatbot">
+<div class="wrapper">
+  <section class="users">
     <header>
-        <h2>ChatGPT 3.5</h2>
-        <span class="close-btn material-icons">close</span>
+      <div class="content">
+        <?php 
+          // Execute SQL query
+          $sql = mysqli_query($conn, "SELECT * FROM users WHERE username = '{$_SESSION['username']}'");
+          
+          // Check for errors
+          if($sql === false) {
+              // Handle the error (display, log, etc.)
+              echo "Error: " . mysqli_error($conn);
+              // Stop execution or handle gracefully
+              exit();
+          }
+          
+          // Check if any rows were returned
+          if(mysqli_num_rows($sql) > 0){
+            // Fetch the row
+            $row = mysqli_fetch_assoc($sql);
+          }
+        ?>
+        <img src="php/images/<?php echo $row['img']; ?>" alt="">
+        <div class="details">
+          <span><?php echo $_SESSION['username']?></span>
+          <p><?php echo $_SESSION['chat_status']; ?></p>
+        </div>
+      </div>
     </header>
-    <ul class="chatbox">
-        <li class="chat incoming">
-            <span class="material-icons">smart_toy</span>
-            <p>Hi there 👋<br>How i can help you today?</p>
-        </li>
-    </ul>
-    <div class="chat-input">
-        <textarea placeholder="Enter a message...." required></textarea>
-        <span id="send-btn" class="material-icons">send</span>
+    <div class="search">
+      <span class="text">Select an user to start chat</span>
+      <input type="text" placeholder="Enter name to search...">
+      <button><i class="fas fa-search"></i></button>
     </div>
+    <div class="users-list">
+    </div>
+  </section>
 </div>
 
 <!-- Footer -->
@@ -98,18 +96,13 @@
   displayFooter();
 ?>
 
-<!-- Scripts File -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="../assets/js/development_area/lib/ace.js"></script>
-<script src="../assets/js/development_area/lib/theme-monokai.js"></script>
-<script src="../assets/js/development_area/ide.js"></script>
-<script src="../assets/js/loader.js"></script>
+<script src="javascript/users.js"></script>
 
 <!--Request Footer-->
 <?php
     }
     else{
-        header("Location: login.php");
+        header("Location: ../views/login.php");
         exit();
     }
     require_once('../includes/partials/footer.php');

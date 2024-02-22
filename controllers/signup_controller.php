@@ -36,24 +36,42 @@
                 </script> 
             <?php
         } else {
-            // Insert data into the DB
-            $sql = "INSERT INTO users (first_name, last_name, birthdate, nationality, email, phone_number, username, password, role, status) VALUES 
-            ('$first_name', '$last_name', '$birthdate', '$nationality', '$email', '$phone_number', '$username', '$hashed_password', '$role', 'Inactive')";
+            $img_name = $_FILES['image']['name'];
+            $img_type = $_FILES['image']['type'];
+            $tmp_name = $_FILES['image']['tmp_name'];
+                    
+            $img_explode = explode('.',$img_name);
+            $img_ext = end($img_explode);
 
-            // Check if the data inserted or not
-            if ($conn->query($sql) === TRUE) {
-                ?>
-                    <script type="text/javascript"> 
-                        alert('Your information has been added successfully. You will now be redirected to the login page.'); 
-                        window.location = "../views/login.php";
-                    </script> 
-                <?php
-            } else {
-                echo "Error: " . $sql . "<br>" . $conn->error;
+            $extensions = ["jpeg", "png", "jpg"];
+            if(in_array($img_ext, $extensions) === true){
+                $types = ["image/jpeg", "image/jpg", "image/png"];
+                if(in_array($img_type, $types) === true){
+                    $time = time();
+                    $new_img_name = $time.$img_name;
+                    if(move_uploaded_file($tmp_name,"../ChatApp/php/images/".$new_img_name)){
+                                
+                        // Insert data into the DB
+                        $sql = "INSERT INTO users (first_name, last_name, birthdate, nationality, email, phone_number, username, password, role, status, img) VALUES 
+                        ('$first_name', '$last_name', '$birthdate', '$nationality', '$email', '$phone_number', '$username', '$hashed_password', '$role', 'Inactive', '$new_img_name')";
+
+                        // Check if the data inserted or not
+                        if ($conn->query($sql) === TRUE) {
+                            ?>
+                                <script type="text/javascript"> 
+                                    alert('Your information has been added successfully. You will now be redirected to the login page.'); 
+                                    window.location = "../views/login.php";
+                                </script> 
+                            <?php
+                        } else {
+                            echo "Error: " . $sql . "<br>" . $conn->error;
+                        }
+
+                        // Close Connection
+                        $conn->close();
+                    }
+                }
             }
-
-            // Close Connection
-            $conn->close();
         }
     }
 ?>

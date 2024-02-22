@@ -29,8 +29,8 @@
             <a class="nav-link active" aria-current="page" href="catalog.php">Catalog</a>
             </div>
             <div class="my_nav">
-            <a class="nav-link active" aria-current="page" href="chat.php"><i class="fa-solid fa-comment fa-2x"></i></a>
-            <a class="nav-link active" aria-current="page" href="chat.php">Chatting</a>
+            <a class="nav-link active" aria-current="page" href="../chat/users.php"><i class="fa-solid fa-comment fa-2x"></i></a>
+            <a class="nav-link active" aria-current="page" href="../chat/users.php">Chatting</a>
             </div>
             <?php
                 if($_SESSION['role'] === 'Developer'){
@@ -40,8 +40,8 @@
                 }
             ?>
             <div class="my_nav">
-            <a class="nav-link active" aria-current="page" href="../controllers/logout_controller.php"><i class="fa-solid fa-right-from-bracket fa-2x"></i></a>
-            <a class="nav-link active" aria-current="page" href="../controllers/logout_controller.php">Logout</a>
+            <a class="nav-link active" aria-current="page" href="../controllers/logout_controller.php?logout_username=<?php echo $_SESSION['username']; ?>"><i class="fa-solid fa-right-from-bracket fa-2x"></i></a>
+            <a class="nav-link active" aria-current="page" href="../controllers/logout_controller.php?logout_username=<?php echo $_SESSION['username']; ?>">Logout</a>
             </div>
             <div class="my_nav_toggle">
             <label class="toggle">

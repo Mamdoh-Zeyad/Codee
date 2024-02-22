@@ -41,11 +41,18 @@
                 $_SESSION['id'] = $row['id'];
                 $_SESSION['role'] = $row['role'];
                 $_SESSION['status'] = $row['status'];
-
+                $_SESSION['chat_status'] = $row['chat_status'];
+                
                 if ($_SESSION['role'] === "Developer" || $_SESSION['role'] === "Consultant" || $_SESSION['role'] === "User") {
+                    $chat_status = "Active now";
+                    $sql2 = "UPDATE users SET chat_status = 'Active now' WHERE username = '" . mysqli_real_escape_string($conn, $username) . "'";
+                    mysqli_query($conn, $sql2);
                     header("Location: ../views/catalog.php");
-                    exit();
+                    exit(); 
                 }else{
+                    $chat_status = "Active now";
+                    $sql2 = "UPDATE users SET chat_status = 'Active now' WHERE username = '" . mysqli_real_escape_string($conn, $username) . "'";
+                    mysqli_query($conn, $sql2);
                     header("Location: ../views/admin.php");
                     exit();
                 }

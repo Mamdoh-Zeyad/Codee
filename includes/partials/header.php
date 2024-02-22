@@ -20,6 +20,7 @@
 
     <!-- Link Files -->
     <link rel="stylesheet" type="text/css" href="../assets/css/my_style.css"/>
+    <link rel="stylesheet" type="text/css" href="../assets/css/chat_style.css"/>
     <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css"/>
     <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../assets/fonts/fontawesome/css/fontawesome.css"/>
@@ -28,6 +29,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/codee-logo - Copy.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
 
     <!-- Scripts Files -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>

@@ -17,7 +17,7 @@
                         <div class="card col-xl-8">
                             <div class="col-xl-12 p-5 d-flex align-items-center justify-content-center">
                                 <form id="registrationForm" class="row g-3 needs-validation" method="post" 
-                                        action="../controllers/signup_controller.php" novalidate>
+                                        action="../controllers/signup_controller.php" novalidate enctype="multipart/form-data">
                                     <div class="form_header">
                                         <p class="my_header_font">Register Your Account.</p>
                                     </div>
@@ -56,7 +56,7 @@
                                         <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" placeholder="" 
                                         pattern="^[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)*$" name="username" id="username" required>
                                         <div class="invalid-feedback" id="usernameError">
-                                            Please choose a username that contains letters or numbers or underscore (_) or dot (.)
+                                            Please choose a username that contains letters or numbers or underscore (_) or dot (.).
                                         </div>
                                         </div>
                                     </div>
@@ -65,16 +65,25 @@
                                         <input type="password" class="form-control" id="validationCustom03" placeholder="" 
                                         pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$" name="password" required>
                                         <div class="invalid-feedback">
-                                            Please choose a password from 8 that contains at least one capital letter and numbers and special characters
+                                            Please choose a password from 8 that contains at least one capital letter and numbers and special characters.
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
+                                    <div class="col-md-6">
                                         <label for="validationCustom02" class="form-label">Join us as<span class="red_star">*</span></label>
                                         <select name="role" class="form-select" id="validationCustom02" required>
                                             <option value="User">User</option>
                                             <option value="Developer">Developer</option>
                                             <option value="Consultant">Consultant</option>
                                         </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="field image">
+                                            <label for="validationCustom03" class="form-label">Select Image<span class="red_star">*</span></label>
+                                            <input type="file" name="image" id="validationCustom03" accept="image/x-png,image/gif,image/jpeg,image/jpg" class="form-control" required>
+                                            <div class="invalid-feedback">
+                                                Please upload an image.
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="col-8">
                                         <div class="form-check">

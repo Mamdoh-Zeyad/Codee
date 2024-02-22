@@ -26,8 +26,8 @@
             <a class="nav-link active" aria-current="page" href="home.php">Home</a>
             </div>
             <div class="my_nav">
-            <a class="nav-link active" aria-current="page" href="../controllers/logout_controller.php"><i class="fa-solid fa-right-from-bracket fa-2x"></i></a>
-            <a class="nav-link active" aria-current="page" href="../controllers/logout_controller.php">Logout</a>
+            <a class="nav-link active" aria-current="page" href="../controllers/logout_controller.php?logout_username=<?php echo $_SESSION['username']; ?>"><i class="fa-solid fa-right-from-bracket fa-2x"></i></a>
+            <a class="nav-link active" aria-current="page" href="../controllers/logout_controller.php?logout_username=<?php echo $_SESSION['username']; ?>">Logout</a>
             </div>
             <div class="my_nav_toggle">
             <label class="toggle">
