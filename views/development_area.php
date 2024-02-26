@@ -12,48 +12,42 @@
     <div class="container">
         <a class="navbar-brand" href="home.php"><img class="my_logo" src="../assets/img/codee-logo.png" alt=""></a>
         <button class="my_btn1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-        <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
         </button>
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-        <div class=" text-center sidebar_body">
-            <div class="my_nav">
-            <a class="nav-link active" aria-current="page" href="#"><i class="fa-solid fa-user fa-2x"></i></a>
-            <?php
-                displayDevDropdownMenu('Developer');
-            ?>
-            </div>
-            <div class="my_nav">
-            <a class="nav-link active" aria-current="page" href="catalog.php"><i class="fa-solid fa-users-viewfinder fa-2x"></i></a>
-            <a class="nav-link active" aria-current="page" href="catalog.php">Catalog</a>
-            </div>
-            <div class="my_nav">
-            <a class="nav-link active" aria-current="page" href="../chat/users.php"><i class="fa-solid fa-comment fa-2x"></i></a>
-            <a class="nav-link active" aria-current="page" href="../chat/users.php">Chatting</a>
-            </div>
-            <?php
-                if($_SESSION['role'] === 'Developer'){
+            <div class=" text-center sidebar_body">
+                <div class="my_nav">
+                    <a class="nav-link active" aria-current="page" href="#"><img class="profile_img" src="../chat/php/images/<?php echo $_SESSION['img']; ?>" alt=""></a>
+                    <?php
+                    displayDevDropdownMenu('Developer');
+                    ?>
+                </div>
+                <div class="my_nav">
+                    <a class="nav-link active" aria-current="page" href="catalog.php"><i class="fa-solid fa-users-viewfinder fa-2x"></i></a>
+                    <a class="nav-link active" aria-current="page" href="catalog.php">Catalog</a>
+                </div>
+                <div class="my_nav">
+                    <a class="nav-link active" aria-current="page" href="../chat/users.php"><i class="fa-solid fa-comment fa-2x"></i></a>
+                    <a class="nav-link active" aria-current="page" href="../chat/users.php">Chatting</a>
+                </div>
+                <?php
+                if ($_SESSION['role'] === 'Developer') {
                     echo "<div class='my_nav'>";
                     echo "<a class='nav-link active' aria-current='page' href='development_area.php'><i class='fa-solid fa-code fa-2x'></i></a>";
                     echo "<a class='nav-link active' aria-current='page' href='development_area.php'>Development Area</a></div>";
                 }
-            ?>
-            <div class="my_nav">
-            <a class="nav-link active" aria-current="page" href="../controllers/logout_controller.php?logout_username=<?php echo $_SESSION['username']; ?>"><i class="fa-solid fa-right-from-bracket fa-2x"></i></a>
-            <a class="nav-link active" aria-current="page" href="../controllers/logout_controller.php?logout_username=<?php echo $_SESSION['username']; ?>">Logout</a>
+                ?>
+                <div class="my_nav">
+                    <a class="nav-link active" aria-current="page" href="../controllers/logout_controller.php?logout_username=<?php echo $_SESSION['username']; ?>"><i class="fa-solid fa-right-from-bracket fa-2x"></i></a>
+                    <a class="nav-link active" aria-current="page" href="../controllers/logout_controller.php?logout_username=<?php echo $_SESSION['username']; ?>">Logout</a>
+                </div>
             </div>
-            <div class="my_nav_toggle">
-            <label class="toggle">
-                <input type="checkbox" id="modeToggle" onclick="toggleMode()">
-                <span class="slider"></span>
-            </label>
-            </div>
-        </div>
         </div>
     </div>
 </nav>
 
 <!-- content -->
-<div class="container">
+<div class="container animate__animated animate__fadeInUp">
     <div class="IDEheader mt-4 card_shadow"> Codeboard Online IDE </div>
     <div class="language-container card_shadow">
         <label for="languages" class="language-label">Select Language:</label>
@@ -70,13 +64,13 @@
     <div class="editor card_shadow" id="editor"></div>
     <div class="labelOutput card_shadow"> Output </div>
     <div class="output mb-4 card_shadow"></div>
-    </div>  
-    <!-- chatbot -->
-    <button class="chatbot-toggler card_shadow">
+</div>
+<!-- chatbot -->
+<button class="chatbot-toggler card_shadow">
     <span class="material-icons"><i class="fa-brands fa-rocketchat"></i></span>
     <span class="material-icons">close</span>
-    </button>
-    <div class="chatbot">
+</button>
+<div class="chatbot">
     <header>
         <h2>ChatGPT 3.5</h2>
         <span class="close-btn material-icons">close</span>
@@ -95,7 +89,7 @@
 
 <!-- Footer -->
 <?php
-  displayFooter();
+displayFooter();
 ?>
 
 <!-- Scripts File -->
@@ -103,12 +97,10 @@
 <script src="../assets/js/development_area/lib/ace.js"></script>
 <script src="../assets/js/development_area/lib/theme-monokai.js"></script>
 <script src="../assets/js/development_area/ide.js"></script>
-<script src="../assets/js/loader.js"></script>
 
 <!--Request Footer-->
 <?php
-    }
-    else{
+    } else {
         header("Location: login.php");
         exit();
     }

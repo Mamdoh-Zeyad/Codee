@@ -11,31 +11,25 @@
     <div class="container">
         <a class="navbar-brand" href="home.php"><img class="my_logo" src="../assets/img/codee-logo.png" alt=""></a>
         <button class="my_btn1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-        <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
         </button>
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-        <div class=" text-center sidebar_body">
-            <div class="my_nav">
-            <a class="nav-link active" aria-current="page" href="#"><i class="fa-solid fa-user fa-2x"></i></a>
-            <?php
-                displayAdminDropdownMenu('Admin', 'Owner');
-            ?>
+            <div class=" text-center sidebar_body">
+                <div class="my_nav">
+                    <a class="nav-link active" aria-current="page" href="#"><img class="profile_img" src="../chat/php/images/<?php echo $_SESSION['img']; ?>" alt=""></a>
+                    <?php
+                    displayAdminDropdownMenu('Admin', 'Owner');
+                    ?>
+                </div>
+                <div class="my_nav">
+                    <a class="nav-link active" aria-current="page" href="home.php"><i class="fa-solid fa-house fa-2x"></i></a>
+                    <a class="nav-link active" aria-current="page" href="home.php">Home</a>
+                </div>
+                <div class="my_nav">
+                    <a class="nav-link active" aria-current="page" href="../controllers/logout_controller.php?logout_username=<?php echo $_SESSION['username']; ?>"><i class="fa-solid fa-right-from-bracket fa-2x"></i></a>
+                    <a class="nav-link active" aria-current="page" href="../controllers/logout_controller.php?logout_username=<?php echo $_SESSION['username']; ?>">Logout</a>
+                </div>
             </div>
-            <div class="my_nav">
-            <a class="nav-link active" aria-current="page" href="home.php"><i class="fa-solid fa-house fa-2x"></i></a>
-            <a class="nav-link active" aria-current="page" href="home.php">Home</a>
-            </div>
-            <div class="my_nav">
-            <a class="nav-link active" aria-current="page" href="../controllers/logout_controller.php?logout_username=<?php echo $_SESSION['username']; ?>"><i class="fa-solid fa-right-from-bracket fa-2x"></i></a>
-            <a class="nav-link active" aria-current="page" href="../controllers/logout_controller.php?logout_username=<?php echo $_SESSION['username']; ?>">Logout</a>
-            </div>
-            <div class="my_nav_toggle">
-            <label class="toggle">
-                <input type="checkbox" id="modeToggle" onclick="toggleMode()">
-                <span class="slider"></span>
-            </label>
-            </div>
-        </div>
         </div>
     </div>
 </nav>
@@ -53,16 +47,16 @@
         </div>
     </div>
 </div>
-<div class="content-body mt-3 mb-5">
+<div class="content-body mt-3 mb-5 animate__animated animate__fadeInUp">
     <div class="container">
         <div class="col-xl-12">
             <div class="card card_shadow">
                 <div class="card-body">
                     <?php
-                        if($_SESSION['role'] == 'Owner'){
-                            echo '<button data-bs-toggle="modal" data-bs-target="#exampleModal3" type="submit" 
-                            class="my_btn1 p-2 ps-3 pe-3 mb-3">Create New Admin</button>';
-                        }
+                    if ($_SESSION['role'] == 'Owner') {
+                        echo '<button data-bs-toggle="modal" data-bs-target="#exampleModal3" type="submit" 
+                        class="my_btn1 p-2 ps-3 pe-3 mb-3">Create New Admin</button>';
+                    }
                     ?>
                     <div class="table-responsive">
                         <table class="table table-bordered verticle-middle text-center">
@@ -83,119 +77,141 @@
                             </thead>
                             <tbody>
                                 <?php
-                                    include("../includes/mysql_inti.php");
+                                include("../includes/mysql_inti.php");
 
-                                    function displayRoleBadge($role)
-                                    {
-                                        if ($role === "User")
-                                            return 'badge bg-primary';
-                                        else if ($role === "Developer")
-                                            return 'badge bg-secondary';
-                                        else if ($role === "Consultant")
-                                            return 'badge bg-dark';
-                                        else if ($role === "Admin")
-                                            return 'badge bg-info';
-                                        else
-                                            return 'badge bg-info';
-                                    }
+                                function displayRoleBadge($role)
+                                {
+                                    if ($role === "User")
+                                        return 'badge bg-primary';
+                                    else if ($role === "Developer")
+                                        return 'badge bg-secondary';
+                                    else if ($role === "Consultant")
+                                        return 'badge bg-dark';
+                                    else if ($role === "Admin")
+                                        return 'badge bg-info';
+                                    else
+                                        return 'badge bg-info';
+                                }
 
-                                    function displayStatusBadge($status)
-                                    {
-                                        if ($status === "Active")
-                                            return 'badge bg-success';
-                                        else if ($status === "Inactive")
-                                            return 'badge bg-danger';
-                                        else if ($status === "Pending")
-                                            return 'badge bg-warning';
-                                        else
-                                            return 'badge bg-info';
-                                    }
+                                function displayStatusBadge($status)
+                                {
+                                    if ($status === "Active")
+                                        return 'badge bg-success';
+                                    else if ($status === "Inactive")
+                                        return 'badge bg-danger';
+                                    else if ($status === "Pending")
+                                        return 'badge bg-warning';
+                                    else
+                                        return 'badge bg-info';
+                                }
 
-                                    function displayRow($rowId, $id, $first_name, $last_name, $bairthdate, 
-                                    $nationlity, $email, $phone_Number, $username, $role, $status){
-                                        echo '<tr data-row-id="' . $rowId . '">';
-                                        echo '<td class="text-left">' . $id . '</td>';
-                                        echo '<td class="text-left">' . $first_name . '</td>';
-                                        echo '<td class="text-left">' . $last_name . '</td>';
-                                        echo '<td class="text-left">' . $bairthdate . '</td>';
-                                        echo '<td class="text-left">' . $nationlity . '</td>';
-                                        echo '<td class="text-left">' . $email . '</td>';
-                                        echo '<td class="text-left">' . $phone_Number . '</td>';
-                                        echo '<td class="text-left">' . $username . '</td>';
-                                        echo '<td class="text-left"><span class="' . displayRoleBadge($role) . '">' . $role . ' </td>';
-                                        echo '<td class="text-left"><span class="' . displayStatusBadge($status) . '">' . $status . '</td>';
-                                        echo ' <td>';
-                                        echo '<a data-bs-toggle="modal" data-bs-target="#exampleModal" title="Edit" href="javascript:void()" class="mr-4 pe-3 edit_icon" data-toggle="tooltip" data-placement="top"
-                                            data-original-title="Edit" data-id="' . $id . '"><i class="fa-solid fa-pen-to-square"></i></a>';
-                                        echo '<a title="Delete" href="javascript:void()" class="pe-3 delete_icon" data-toggle="tooltip" data-placement="top"
-                                             data-original-title="Delete" data-id="' . $id . '"><i class="fa-solid fa-user-xmark"></i></a></span>';
-                                        echo '<a data-bs-toggle="modal" data-bs-target="#exampleModal1" title="Verify User" href="javascript:void()" class="verify_icon" data-toggle="tooltip" data-placement="top"
-                                             data-original-title="Verify" data-id="' . $id . '"><i class="fa-solid fa-person-circle-check"></i></a></span>';
-                                        echo '</td>';
-                                        echo '</tr>';
-                                    }
+                                function displayRow(
+                                    $rowId,
+                                    $id,
+                                    $first_name,
+                                    $last_name,
+                                    $bairthdate,
+                                    $nationlity,
+                                    $email,
+                                    $phone_Number,
+                                    $username,
+                                    $role,
+                                    $status
+                                ) {
+                                    echo '<tr data-row-id="' . $rowId . '">';
+                                    echo '<td class="text-left">' . $id . '</td>';
+                                    echo '<td class="text-left">' . $first_name . '</td>';
+                                    echo '<td class="text-left">' . $last_name . '</td>';
+                                    echo '<td class="text-left">' . $bairthdate . '</td>';
+                                    echo '<td class="text-left">' . $nationlity . '</td>';
+                                    echo '<td class="text-left">' . $email . '</td>';
+                                    echo '<td class="text-left">' . $phone_Number . '</td>';
+                                    echo '<td class="text-left">' . $username . '</td>';
+                                    echo '<td class="text-left"><span class="' . displayRoleBadge($role) . '">' . $role . ' </td>';
+                                    echo '<td class="text-left"><span class="' . displayStatusBadge($status) . '">' . $status . '</td>';
+                                    echo ' <td>';
+                                    echo '<a data-bs-toggle="modal" data-bs-target="#exampleModal" title="Edit" href="javascript:void()" class="mr-4 pe-3 edit_icon" data-toggle="tooltip" data-placement="top"
+                                        data-original-title="Edit" data-id="' . $id . '"><i class="fa-solid fa-pen-to-square"></i></a>';
+                                    echo '<a title="Delete" href="javascript:void()" class="pe-3 delete_icon" data-toggle="tooltip" data-placement="top"
+                                            data-original-title="Delete" data-id="' . $id . '"><i class="fa-solid fa-user-xmark"></i></a></span>';
+                                    echo '<a data-bs-toggle="modal" data-bs-target="#exampleModal1" title="Verify User" href="javascript:void()" class="verify_icon" data-toggle="tooltip" data-placement="top"
+                                            data-original-title="Verify" data-id="' . $id . '"><i class="fa-solid fa-person-circle-check"></i></a></span>';
+                                    echo '</td>';
+                                    echo '</tr>';
+                                }
 
-                                    // Define the number of rows to display per page
-                                    $rowsPerPage = 10;
+                                // Define the number of rows to display per page
+                                $rowsPerPage = 10;
 
-                                    // Calculate the offset based on the current page
-                                    $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
-                                    $offset = ($page - 1) * $rowsPerPage;
+                                // Calculate the offset based on the current page
+                                $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
+                                $offset = ($page - 1) * $rowsPerPage;
 
-                                    // SQL query to include LIMIT and OFFSET
-                                    $sql = "SELECT * FROM users LIMIT $offset, $rowsPerPage";
-                                    $result = mysqli_query($conn, $sql);
+                                // SQL query to include LIMIT and OFFSET
+                                $sql = "SELECT * FROM users LIMIT $offset, $rowsPerPage";
+                                $result = mysqli_query($conn, $sql);
 
-                                    // Initialize a counter
-                                    $counter = 0;
+                                // Initialize a counter
+                                $counter = 0;
 
-                                    // Loop through the results
-                                    while ($row = mysqli_fetch_assoc($result)) {
-                                        displayRow($counter, $row["id"], $row["first_name"], $row["last_name"], $row["birthdate"], 
-                                        $row["nationality"], $row["email"], $row["phone_number"], $row["username"], $row["role"], $row["status"]);
-                                        
-                                        $counter++;
-                                    }
-                                    
-                                    // Calculate the total of records
-                                    $totalRowsQuery = "SELECT COUNT(*) AS total FROM users";
-                                    $totalResult = mysqli_query($conn, $totalRowsQuery);
-                                    $totalRows = mysqli_fetch_assoc($totalResult)['total'];
+                                // Loop through the results
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    displayRow(
+                                        $counter,
+                                        $row["id"],
+                                        $row["first_name"],
+                                        $row["last_name"],
+                                        $row["birthdate"],
+                                        $row["nationality"],
+                                        $row["email"],
+                                        $row["phone_number"],
+                                        $row["username"],
+                                        $row["role"],
+                                        $row["status"]
+                                    );
 
-                                    // Close the database connection
-                                    mysqli_close($conn);
+                                    $counter++;
+                                }
 
-                                    // Close the table
-                                    echo '</tbody>';
-                                    echo '</table>';
+                                // Calculate the total of records
+                                $totalRowsQuery = "SELECT COUNT(*) AS total FROM users";
+                                $totalResult = mysqli_query($conn, $totalRowsQuery);
+                                $totalRows = mysqli_fetch_assoc($totalResult)['total'];
 
-                                    // Display pagination links
-                                    echo '<div class="pagination d-flex justify-content-end">';
-                                    echo '<ul class="pagination">';
+                                // Close the database connection
+                                mysqli_close($conn);
 
-                                    // Previous Page Link
-                                    echo '<li class="page-item ' . ($page <= 1 ? 'disabled' : '') . '">';
-                                    echo '<a class="page-link" href="?page=' . ($page - 1) . '" aria-label="Previous">';
-                                    echo '<span aria-hidden="true">&laquo;</span>';
-                                    echo '</a>';
+                                // Close the table
+                                echo '</tbody>';
+                                echo '</table>';
+
+                                // Display pagination links
+                                echo '<div class="pagination d-flex justify-content-end">';
+                                echo '<ul class="pagination">';
+
+                                // Previous Page Link
+                                echo '<li class="page-item ' . ($page <= 1 ? 'disabled' : '') . '">';
+                                echo '<a class="page-link" href="?page=' . ($page - 1) . '" aria-label="Previous">';
+                                echo '<span aria-hidden="true">&laquo;</span>';
+                                echo '</a>';
+                                echo '</li>';
+
+                                // Display Page links
+                                for ($i = max(1, $page - 2); $i <= min($page + 2, ceil($totalRows / $rowsPerPage)); $i++) {
+                                    echo '<li class="page-item ' . ($i == $page ? 'active' : '') . '">';
+                                    echo '<a class="page-link" href="?page=' . $i . '">' . $i . '</a>';
                                     echo '</li>';
+                                }
 
-                                    // Display Page links
-                                    for ($i = max(1, $page - 2); $i <= min($page + 2, ceil($totalRows / $rowsPerPage)); $i++) {
-                                        echo '<li class="page-item ' . ($i == $page ? 'active' : '') . '">';
-                                        echo '<a class="page-link" href="?page=' . $i . '">' . $i . '</a>';
-                                        echo '</li>';
-                                    }
+                                // Next Page Link
+                                echo '<li class="page-item ' . ($page >= ceil($totalRows / $rowsPerPage) ? 'disabled' : '') . '">';
+                                echo '<a class="page-link" href="?page=' . ($page + 1) . '" aria-label="Next">';
+                                echo '<span aria-hidden="true">&raquo;</span>';
+                                echo '</a>';
+                                echo '</li>';
 
-                                    // Next Page Link
-                                    echo '<li class="page-item ' . ($page >= ceil($totalRows / $rowsPerPage) ? 'disabled' : '') . '">';
-                                    echo '<a class="page-link" href="?page=' . ($page + 1) . '" aria-label="Next">';
-                                    echo '<span aria-hidden="true">&raquo;</span>';
-                                    echo '</a>';
-                                    echo '</li>';
-
-                                    echo '</ul>';
-                                    echo '</div>';
+                                echo '</ul>';
+                                echo '</div>';
                                 ?>
                     </div>
                 </div>
@@ -206,7 +222,7 @@
 
 <!-- Footer -->
 <?php
-  displayFooter();
+    displayFooter();
 ?>
 
 <!-- Edit Modal -->
@@ -247,11 +263,11 @@
                     <div class="col-md-12">
                         <label for="validationCustomUsername" class="form-label">Username<span class="red_star">*</span></label>
                         <div class="input-group has-validation">
-                        <span class="input-group-text" id="inputGroupPrepend">@</span>
-                        <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" placeholder="" pattern="^[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)*$" name="username" id="username" required>
-                        <div class="invalid-feedback" id="usernameError">
-                            Please choose a username that contains letters or numbers or underscore (_) or dot (.)
-                        </div>
+                            <span class="input-group-text" id="inputGroupPrepend">@</span>
+                            <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" placeholder="" pattern="^[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)*$" name="username" id="username" required>
+                            <div class="invalid-feedback" id="usernameError">
+                                Please choose a username that contains letters or numbers or underscore (_) or dot (.)
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer col-12">
@@ -273,7 +289,7 @@
                 <button type="button" id="modal_close" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-            <form id="registrationForm" class="row g-3 needs-validation" method="post" action="../controllers/admin/approve_user.php" novalidate>
+                <form id="registrationForm" class="row g-3 needs-validation" method="post" action="../controllers/admin/approve_user.php" novalidate>
                     <div class="col-md-6">
                         <label for="validationCustom01" class="form-label">User ID</label>
                         <input type="text" class="form-control" name="user_id" required readonly>
@@ -308,14 +324,13 @@
                     </div>
                     <div class="col-md-12">
                         <label for="validationCustom01" class="form-label">Experience</label>
-                        <textarea class="form-control" id="floatingTextarea2" 
-                        style="height: 100px" name="experience" required></textarea>
+                        <textarea class="form-control" id="floatingTextarea2" style="height: 100px" name="experience" required></textarea>
                     </div>
                     <div class="col-md-6">
-                        
+
                     </div>
                     <div class="modal-footer col-12">
-                    <p><a class="forget_password" target="_blank" href=""><i class="fa-solid fa-eye"></i> View CV</a></p>
+                        <p><a class="forget_password" target="_blank" href=""><i class="fa-solid fa-eye"></i> View CV</a></p>
                         <button type="submit" class="my_btn1 float-end">Approve</button>
                         <button type="button" class="my_btn2" data-bs-dismiss="modal">Close</button>
                     </div>
@@ -330,19 +345,18 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header modal_header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="fa-solid fa-pen-to-square"></i> Edit User's Information</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="fa-solid fa-pen-to-square"></i> Create new Admin</h1>
                 <button type="button" id="modal_close" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="registrationForm" class="row g-3 needs-validation" method="post" 
-                    action="../controllers/admin/create_admin.php" novalidate>
+                <form id="registrationForm" class="row g-3 needs-validation" method="post" action="../controllers/admin/create_admin.php" novalidate>
                     <div class="col-md-6">
                         <label for="validationCustom01" class="form-label">First Name<span class="red_star">*</span></label>
                         <input type="text" class="form-control" id="validationCustom01" name="first_name" placeholder="" pattern="[a-zA-Z ]*" required>
                     </div>
                     <div class="col-md-6">
                         <label for="validationCustom02" class="form-label">Last Name<span class="red_star">*</span></label>
-                        <input type="text" class="form-control" id="validationCustom02" name="last_name" placeholder="" pattern="[a-zA-Z ]*"  required>
+                        <input type="text" class="form-control" id="validationCustom02" name="last_name" placeholder="" pattern="[a-zA-Z ]*" required>
                     </div>
                     <div class="col-md-6">
                         <label for="validationCustom02" class="form-label">Birthdate<span class="red_star">*</span></label>
@@ -356,8 +370,7 @@
                     </div>
                     <div class="col-md-6">
                         <label for="validationCustom01" class="form-label">Email<span class="red_star">*</span></label>
-                        <input type="email" class="form-control" id="validationCustom01" placeholder="example@domain.com" 
-                        pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" name="email" id="email" required>
+                        <input type="email" class="form-control" id="validationCustom01" placeholder="example@domain.com" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" name="email" id="email" required>
                         <div class="invalid-feedback" id="emailError"></div>
                     </div>
                     <div class="col-md-6">
@@ -367,18 +380,16 @@
                     <div class="col-md-6">
                         <label for="validationCustomUsername" class="form-label">Username<span class="red_star">*</span></label>
                         <div class="input-group has-validation">
-                        <span class="input-group-text" id="inputGroupPrepend">@</span>
-                        <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" placeholder="" 
-                        pattern="^[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)*$" name="username" id="username" required>
-                        <div class="invalid-feedback" id="usernameError">
-                            Please choose a username that contains letters or numbers or underscore (_) or dot (.)
-                        </div>
+                            <span class="input-group-text" id="inputGroupPrepend">@</span>
+                            <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" placeholder="" pattern="^[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)*$" name="username" id="username" required>
+                            <div class="invalid-feedback" id="usernameError">
+                                Please choose a username that contains letters or numbers or underscore (_) or dot (.)
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <label for="validationCustom03" class="form-label">Password<span class="red_star">*</span></label>
-                        <input type="password" class="form-control" id="validationCustom03" placeholder="" 
-                        pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$" name="password" required>
+                        <input type="password" class="form-control" id="validationCustom03" placeholder="" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$" name="password" required>
                         <div class="invalid-feedback">
                             Please choose a password from 8 that contains at least one capital letter and numbers and special characters
                         </div>
@@ -387,8 +398,8 @@
                         <label for="validationCustom02" class="form-label">Role<span class="red_star">*</span></label>
                         <input type="text" name="role" class="form-control" id="validationCustom02" value="Admin" readonly>
                         <!-- <select name="role" class="form-select" id="validationCustom02" required>
-                            <option value="Admin">Admin</option>
-                        </select> -->
+                        <option value="Admin">Admin</option>
+                    </select> -->
                     </div>
                     <div class="modal-footer col-12">
                         <button type="submit" class="my_btn1 float-end">Create Admin</button>
@@ -402,14 +413,12 @@
 
 <!-- Scripts File -->
 <script type="text/javascript" src="../assets/js/admin.js"></script>
-<script type="text/javascript" src="../assets/js/loader.js"></script>
 
 <!--Request Footer-->
 <?php
-    }
-    else{
-        header("Location: login.php");
-        exit();
+    } else {
+    header("Location: login.php");
+    exit();
     }
     require_once('../includes/partials/footer.php');
 ?>

@@ -5,7 +5,6 @@
         $outgoing_username = $_SESSION['username'];
         $incoming_username = mysqli_real_escape_string($conn, $_POST['incoming_username']);
         $output = "";
-        // Ensure proper quoting of string values and use prepared statements to prevent SQL injection
         $sql = "SELECT * FROM messages LEFT JOIN users ON users.username = messages.outgoing_msg_id
                 WHERE (outgoing_msg_id = ? AND incoming_msg_id = ?)
                 OR (outgoing_msg_id = ? AND incoming_msg_id = ?) ORDER BY msg_id";
@@ -36,7 +35,6 @@
             }
             echo $output;
         } else {
-            // Handle prepared statement error
             echo "SQL error: " . mysqli_error($conn);
         }
     }else{

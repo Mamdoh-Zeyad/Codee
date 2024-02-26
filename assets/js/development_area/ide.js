@@ -13,7 +13,6 @@ window.onload = function() {
     editor = ace.edit("editor");
     editor.setTheme("ace/theme/nord_dark");
     editor.session.setMode("ace/mode/c_cpp");
-    // nord_dark
 }
 
 function changeLanguage() {
@@ -57,7 +56,6 @@ const API_KEY = "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";
 const inputInitHeight = chatInput.scrollHeight;
 
 const createChatLi = (message, className) => {
-    // create a chat <li> element with passed message and className
     const chatLi = document.createElement("li");
     chatLi.classList.add("chat", className);
     let chatContent = className === "outgoing" ? `<p></p>` : `<span class="material-icons">smart_toy</span><p></p>`;
@@ -80,7 +78,6 @@ const generateResponse = (incomingChatLi) => {
             messages: [{ role: "user", content: userMessage }]
         })
     }
-    // send POST request to API, get respone
     fetch(API_URL, requestOptions).then(res => res.json()).then(data => {
         messageElement.textContent = data.choices[0].message.content;
 
@@ -96,12 +93,10 @@ const handleChat = () => {
     chatInput.value = "";
     chatInput.style.height = `${inputInitHeight}px`;
 
-    // Append the useres message to the chatbox
     chatbox.appendChild(createChatLi(userMessage, "outgoing"));
     chatbox.scrollTo(0, chatbox.scrollHeight);
 
     setTimeout(() => {
-        // display "thinking..." message while waiting for the response
         const incomingChatLi = createChatLi("Thinking...", "incoming")
         chatbox.appendChild(incomingChatLi);
         chatbox.scrollTo(0, chatbox.scrollHeight);
@@ -110,14 +105,11 @@ const handleChat = () => {
 }
 
 chatInput.addEventListener("input", () => {
-    // adjust the height of input textarea based on it is content
     chatInput.style.height = `${inputInitHeight}px`;
     chatInput.style.height = `${chatInput.scrollHeight}px`;
 });
 
 chatInput.addEventListener("keydown", (e) => {
-    // if Enter key is pressed without shift key and the window 
-    // width is grater then 800px, handle the chat
     if (e.key === "Enter" && !e.shiftKey && window.innerWidth > 800) {
         e.preventDefault();
         handleChat();

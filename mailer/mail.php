@@ -12,17 +12,16 @@ $mail = new PHPMailer();
 
     //Server settings
     // $mail->SMTPDebug = SMTP::DEBUG_SERVER; //Enable verbose debug output
-    // هذا اللي يظهر الاخطاء لو في حالة ظهرت او يظهر انه تم ارسال الرسالة                      
-    $mail->isSMTP();                                            //Send using SMTP
-    $mail->Host       = 'smtp.gmail.com';                                 //Set the SMTP server to send through
-    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-    $mail->Username   = 'sabagh5844@gmail.com';                           //SMTP username
-    $mail->Password   = 'pdszxkikijbfemzh';                        //SMTP password
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-    $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+    $mail->isSMTP();                                            
+    $mail->Host       = 'smtp.gmail.com';                                 
+    $mail->SMTPAuth   = true;                                   
+    $mail->Username   = 'sabagh5844@gmail.com';                           
+    $mail->Password   = 'pdszxkikijbfemzh';                        
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            
+    $mail->Port       = 465;                                   
     
     //Content format
-    $mail->isHTML(true);        //Set email format to HTML
+    $mail->isHTML(true);
     $mail->CharSet = "UTF-8"; 
 
 ?>

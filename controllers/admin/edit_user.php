@@ -32,12 +32,10 @@
                 </script> 
             <?php
         } else {
-            // Insert data into the DB
             $sql = "UPDATE users SET first_name = '$firstName', last_name = '$lastName', birthdate = '$birthdate',
             email = '$email', phone_number = '$phone_number', username = '$username' WHERE id = $userId";
             $result = mysqli_query($conn, $sql);
 
-            // Check if the data inserted or not
             if ($conn->query($sql) === TRUE) {
                 ?>
                     <script type="text/javascript"> 

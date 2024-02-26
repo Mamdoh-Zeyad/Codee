@@ -16,7 +16,7 @@
     // Handle File Uploads
     $file_name = $_FILES['file']['name'];
     $file_tmp = $_FILES['file']['tmp_name'];
-    $upload_directory = "../assets/uploads/"; // Define your upload directory
+    $upload_directory = "../assets/uploads/";
     $destination = $upload_directory . $file_name;
     move_uploaded_file($file_tmp, $destination);
 

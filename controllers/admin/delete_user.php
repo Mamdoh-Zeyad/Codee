@@ -3,7 +3,6 @@
         
         include("../../includes/mysql_inti.php");
 
-        // Sanitize the input to prevent SQL injection
         $id = mysqli_real_escape_string($conn, $_GET['id']);
 
         $deleteSkillsQuery = "DELETE FROM development_skills WHERE user_id = '$id'";

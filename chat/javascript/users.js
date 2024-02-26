@@ -1,3 +1,12 @@
+/*
+  - This is a JS file for the users.php page.
+*/
+
+//Check connection 
+console.log("Hello");
+
+/* ------------------------------------------------------Break Line------------------------------------------------------ */
+
 const searchBar = document.querySelector(".search input"),
 searchIcon = document.querySelector(".search button"),
 usersList = document.querySelector(".users-list");
@@ -48,4 +57,6 @@ setInterval(() =>{
   }
   xhr.send();
 }, 500);
+
+/* ------------------------------------------------------Break Line------------------------------------------------------ */
 

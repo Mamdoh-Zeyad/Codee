@@ -64,7 +64,7 @@ $(document).ready(function () {
       var userId = $(this).data('id');
       $.ajax({
           // url: 'http://localhost/codee/codee/controllers/admin/fetch_request_info.php',
-          url: 'http://localhost/codee/controllers/admin/fetch_user_info.php',
+          url: 'http://localhost/codee/controllers/admin/fetch_request_info.php',
           data: { id: userId },
           success: function (response) {
               var userInfo = JSON.parse(response);

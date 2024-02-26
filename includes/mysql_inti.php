@@ -1,4 +1,7 @@
 <?php
+    /*
+        - This file is the connection to the database.
+    */
     $servername = "localhost";
     $username = "root";
     $password = "";

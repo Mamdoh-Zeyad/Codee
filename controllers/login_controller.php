@@ -1,10 +1,16 @@
 <?php
+    /*
+        - This file to handle the login.php form
+    */
     session_start();
 
+    // connect to the database
     include("../includes/mysql_inti.php");
 
+    // check if the username and password are set
     if (isset($_POST['username']) && isset($_POST['password'])) {
 
+        // this function will validate the username and password by removing any spaces
         function validate($data)
         {
             $data = trim($data);
@@ -15,6 +21,7 @@
         $username = validate($_POST['username']);
         $password = validate($_POST['password']);
 
+        // check if the username and password are empty or not
         if (empty($username)) {
             header("Location: ../views/login.php?error=Username is required.");
             exit();
@@ -30,6 +37,7 @@
         if (mysqli_num_rows($result) === 1) {
             $row = mysqli_fetch_assoc($result);
 
+            // dehash the password and check if its same or not
             if (password_verify($password, $row['password'])) {
                 $_SESSION['username'] = $row['username'];
                 $_SESSION['first_name'] = $row['first_name'];
@@ -41,8 +49,10 @@
                 $_SESSION['id'] = $row['id'];
                 $_SESSION['role'] = $row['role'];
                 $_SESSION['status'] = $row['status'];
+                $_SESSION['img'] = $row['img'];
                 $_SESSION['chat_status'] = $row['chat_status'];
                 
+                // redirect the user depending on his role
                 if ($_SESSION['role'] === "Developer" || $_SESSION['role'] === "Consultant" || $_SESSION['role'] === "User") {
                     $chat_status = "Active now";
                     $sql2 = "UPDATE users SET chat_status = 'Active now' WHERE username = '" . mysqli_real_escape_string($conn, $username) . "'";
@@ -56,7 +66,6 @@
                     header("Location: ../views/admin.php");
                     exit();
                 }
-                // Add other role checks as needed
             } else {
                 header("Location: ../views/login.php?error=Incorrect username or password.");
                 exit();

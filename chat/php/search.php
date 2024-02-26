@@ -5,7 +5,6 @@
     $outgoing_username = $_SESSION['username'];
     $searchTerm = mysqli_real_escape_string($conn, $_POST['searchTerm']);
 
-    // Properly quote string values in the SQL query
     $sql = "SELECT * FROM users WHERE NOT username = '{$outgoing_username}' AND (username LIKE '%{$searchTerm}%')";
     $output = "";
     $query = mysqli_query($conn, $sql);

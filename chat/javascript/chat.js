@@ -1,3 +1,12 @@
+/*
+  - This is a JS file for the chat.php page.
+*/
+
+//Check connection 
+console.log("Hello");
+
+/* ------------------------------------------------------Break Line------------------------------------------------------ */
+
 const form = document.querySelector(".typing-area"),
 incoming_username = form.querySelector(".incoming_id").value,
 inputField = form.querySelector(".input-field"),
@@ -59,5 +68,7 @@ setInterval(() =>{
 
 function scrollToBottom(){
     chatBox.scrollTop = chatBox.scrollHeight;
-  }
+}
+
+/* ------------------------------------------------------Break Line------------------------------------------------------ */
   

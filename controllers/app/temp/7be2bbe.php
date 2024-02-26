@@ -1,0 +1,5 @@
+<?php
+
+ech 'ddddd';
+
+?>

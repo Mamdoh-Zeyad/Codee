@@ -27,40 +27,29 @@ function topFunction() {
 
 /* ------------------------------------------------------Break Line------------------------------------------------------ */
 
+// Change the logo's size while scrolling
 window.addEventListener('scroll', function() {
   var logo = document.querySelector('.my_logo');
   if (window.scrollY > 0) {
-      logo.style.maxWidth = '200px'; // Set the smaller size when scrolled
+      logo.style.maxWidth = '200px';
   } else {
-      logo.style.maxWidth = '250px'; // Set the original size when not scrolled
+      logo.style.maxWidth = '250px';
   }
 });
 
 /* ------------------------------------------------------Break Line------------------------------------------------------ */
 
-function toggleMode() {
-  var body = document.body;
-  var modeToggle = document.getElementById('modeToggle');
-  if (modeToggle.checked) {
-      body.classList.add('dark-mode');
-  } else {
-      body.classList.remove('dark-mode');
-  }
-}
-
-/* ------------------------------------------------------Break Line------------------------------------------------------ */
-
-// Get the navbar element
+// Change the logo's background scrolling
 var navbar = document.querySelector('.my_navbar');
 
-// Function to toggle the background color of the navbar
 function toggleNavbarBackground() {
-    if (window.scrollY > 0) { // Check if user has scrolled
-        navbar.classList.add('scrolled'); // Add the 'scrolled' class
+    if (window.scrollY > 0) {
+        navbar.classList.add('scrolled');
     } else {
-        navbar.classList.remove('scrolled'); // Remove the 'scrolled' class
+        navbar.classList.remove('scrolled');
     }
 }
 
-// Add scroll event listener to window
 window.addEventListener('scroll', toggleNavbarBackground);
+
+/* ------------------------------------------------------Break Line------------------------------------------------------ */
