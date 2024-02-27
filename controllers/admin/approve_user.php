@@ -1,4 +1,7 @@
 <?php
+    /* 
+        - This file for approve a user.
+    */
     include("../../includes/mysql_inti.php");
 
     $userId = $_POST['user_id'];

@@ -1,4 +1,7 @@
 <?php
+    /* 
+        - This file fetch the user's approvment request.
+    */
     include("../../includes/mysql_inti.php");
 
     if (isset($_GET['id'])) {

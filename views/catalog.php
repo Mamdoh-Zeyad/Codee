@@ -185,9 +185,6 @@
 displayFooter();
 ?>
 
-<!-- Scripts File -->
-<script type="text/javascript" src="../assets/js/catalog.js"></script>
-
 <!--Request Footer-->
 <?php
     } else {

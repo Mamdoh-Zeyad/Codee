@@ -1,4 +1,8 @@
 <?php
+    /* 
+        - This file handle the approvement requests.
+    */
+
     include("../includes/mysql_inti.php");
 
     // Take values from the form

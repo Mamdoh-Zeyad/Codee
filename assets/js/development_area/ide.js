@@ -119,3 +119,5 @@ chatInput.addEventListener("keydown", (e) => {
 sendChatBtn.addEventListener("click", handleChat);
 chatbotCloseBtn.addEventListener("click", () => document.body.classList.remove("show-chatbot"))
 chatbotToggler.addEventListener("click", () => document.body.classList.toggle("show-chatbot"))
+
+/* ------------------------------------------------------Break Line------------------------------------------------------ */

@@ -1,14 +1,14 @@
 <!--Request Header-->
 <title>Codee - Users</title>
 <?php
-require_once('../includes/partials/header.php');
-include("../includes/functions.php");
-include("../includes/mysql_inti.php");
-session_start();
-if (
-isset($_SESSION['username']) && isset($_SESSION['first_name']) &&
-isset($_SESSION['last_name']) && isset($_SESSION['chat_status'])
-) {
+  require_once('../includes/partials/header.php');
+  include("../includes/functions.php");
+  include("../includes/mysql_inti.php");
+  session_start();
+  if (
+  isset($_SESSION['username']) && isset($_SESSION['first_name']) &&
+  isset($_SESSION['last_name']) && isset($_SESSION['chat_status'])
+  ) {
 ?>
 
 <!--Home Page Header-->
@@ -23,7 +23,7 @@ isset($_SESSION['last_name']) && isset($_SESSION['chat_status'])
         <div class="my_nav">
           <a class="nav-link active" aria-current="page" href="#"><img class="profile_img" src="php/images/<?php echo $_SESSION['img']; ?>" alt=""></a>
           <?php
-          displayOtherDropdownMenu('Admin');
+            displayOtherDropdownMenu('Admin');
           ?>
         </div>
         <div class="my_nav">
@@ -35,11 +35,11 @@ isset($_SESSION['last_name']) && isset($_SESSION['chat_status'])
           <a class="nav-link active" aria-current="page" href="users.php">Chatting</a>
         </div>
         <?php
-        if ($_SESSION['role'] === 'Developer') {
-          echo "<div class='my_nav'>";
-          echo "<a class='nav-link active' aria-current='page' href='../views/development_area.php'><i class='fa-solid fa-code fa-2x'></i></a>";
-          echo "<a class='nav-link active' aria-current='page' href='../views/development_area.php'>Development Area</a></div>";
-        }
+          if ($_SESSION['role'] === 'Developer') {
+            echo "<div class='my_nav'>";
+            echo "<a class='nav-link active' aria-current='page' href='../views/development_area.php'><i class='fa-solid fa-code fa-2x'></i></a>";
+            echo "<a class='nav-link active' aria-current='page' href='../views/development_area.php'>Development Area</a></div>";
+          }
         ?>
         <div class="my_nav">
           <a class="nav-link active" aria-current="page" href="../controllers/logout_controller.php?logout_username=<?php echo $_SESSION['username']; ?>"><i class="fa-solid fa-right-from-bracket fa-2x"></i></a>
@@ -50,21 +50,22 @@ isset($_SESSION['last_name']) && isset($_SESSION['chat_status'])
   </div>
 </nav>
 
+<!-- users -->
 <div class="wrapper animate__animated animate__fadeInLeft">
   <section class="users">
     <header>
       <div class="content">
         <?php
-        $sql = mysqli_query($conn, "SELECT * FROM users WHERE username = '{$_SESSION['username']}'");
+          $sql = mysqli_query($conn, "SELECT * FROM users WHERE username = '{$_SESSION['username']}'");
 
-        if ($sql === false) {
-          echo "Error: " . mysqli_error($conn);
-          exit();
-        }
+          if ($sql === false) {
+            echo "Error: " . mysqli_error($conn);
+            exit();
+          }
 
-        if (mysqli_num_rows($sql) > 0) {
-          $row = mysqli_fetch_assoc($sql);
-        }
+          if (mysqli_num_rows($sql) > 0) {
+            $row = mysqli_fetch_assoc($sql);
+          }
         ?>
         <img src="php/images/<?php echo $row['img']; ?>" alt="">
         <div class="details">
@@ -85,16 +86,16 @@ isset($_SESSION['last_name']) && isset($_SESSION['chat_status'])
 
 <!-- Footer -->
 <?php
-displayFooter();
+  displayFooter();
 ?>
 
 <script src="javascript/users.js"></script>
 
 <!--Request Footer-->
 <?php
-} else {
-  header("Location: ../views/login.php");
-  exit();
-}
-require_once('../includes/partials/footer.php');
+  } else {
+    header("Location: ../views/login.php");
+    exit();
+  }
+  require_once('../includes/partials/footer.php');
 ?>

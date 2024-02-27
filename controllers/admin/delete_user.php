@@ -1,4 +1,7 @@
 <?php
+    /* 
+        - This file for delete a user.
+    */
     if (isset($_GET['id'])) {
         
         include("../../includes/mysql_inti.php");

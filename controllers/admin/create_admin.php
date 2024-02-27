@@ -1,4 +1,8 @@
 <?php
+    /* 
+        - This file for creating new admins.
+    */
+
     include("../../includes/mysql_inti.php");
 
     // Take values from the form

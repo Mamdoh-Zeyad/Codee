@@ -197,7 +197,7 @@
                     <div class="col-md-7 ">
                         <div class="upload-container float-end">
                             <span id="file-chosen">No file chosen</span>
-                            <input type="file" name="file" id="file" hidden>
+                            <input type="file" name="file" id="file" hidden required>
                             <label class="upload-button" for="file"> <i class="fa-solid fa-arrow-up-from-bracket"></i> Upload Files</label>
                             <button class="upload-button" type="submit">Submit</button>
                         </div>

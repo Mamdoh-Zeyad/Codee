@@ -1,4 +1,7 @@
 <?php
+    /* 
+        - This file for listing all the users.
+    */
     session_start();
     include_once "../../includes/mysql_inti.php";
     
@@ -15,7 +18,6 @@
     mysqli_stmt_execute($stmt);
     
     $query = mysqli_stmt_get_result($stmt);
-    
     $output = "";
     
     if(mysqli_num_rows($query) == 0){

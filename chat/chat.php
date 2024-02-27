@@ -9,6 +9,7 @@
     isset($_SESSION['last_name']) && isset($_SESSION['chat_status'])
   ) {
 ?>
+
 <!--Home Page Header-->
 <nav class="navbar my_navbar2">
   <div class="container">
@@ -21,7 +22,7 @@
         <div class="my_nav">
           <a class="nav-link active" aria-current="page" href="#"><img class="profile_img" src="php/images/<?php echo $_SESSION['img']; ?>" alt=""></i></a>
           <?php
-          displayOtherDropdownMenu('Admin');
+            displayOtherDropdownMenu('Admin');
           ?>
         </div>
         <div class="my_nav">
@@ -33,11 +34,11 @@
           <a class="nav-link active" aria-current="page" href="users.php">Chatting</a>
         </div>
         <?php
-        if ($_SESSION['role'] === 'Developer') {
-          echo "<div class='my_nav'>";
-          echo "<a class='nav-link active' aria-current='page' href='../views/development_area.php'><i class='fa-solid fa-code fa-2x'></i></a>";
-          echo "<a class='nav-link active' aria-current='page' href='../views/development_area.php'>Development Area</a></div>";
-        }
+          if ($_SESSION['role'] === 'Developer') {
+            echo "<div class='my_nav'>";
+            echo "<a class='nav-link active' aria-current='page' href='../views/development_area.php'><i class='fa-solid fa-code fa-2x'></i></a>";
+            echo "<a class='nav-link active' aria-current='page' href='../views/development_area.php'>Development Area</a></div>";
+          }
         ?>
         <div class="my_nav">
           <a class="nav-link active" aria-current="page" href="../controllers/logout_controller.php?logout_username=<?php echo $_SESSION['username']; ?>"><i class="fa-solid fa-right-from-bracket fa-2x"></i></a>
@@ -51,15 +52,14 @@
   <section class="chat-area">
     <header>
       <?php
-      // Properly quote the username string value in the SQL query
-      $username = mysqli_real_escape_string($conn, $_GET['username']);
-      $sql = mysqli_query($conn, "SELECT * FROM users WHERE username = '{$username}'");
-      if ($sql && mysqli_num_rows($sql) > 0) {
-        $row = mysqli_fetch_assoc($sql);
-      } else {
-        header("location: users.php");
-        exit(); // Exit the script
-      }
+        $username = mysqli_real_escape_string($conn, $_GET['username']);
+        $sql = mysqli_query($conn, "SELECT * FROM users WHERE username = '{$username}'");
+        if ($sql && mysqli_num_rows($sql) > 0) {
+          $row = mysqli_fetch_assoc($sql);
+        } else {
+          header("location: users.php");
+          exit();
+        }
       ?>
       <a href="users.php" class="back-icon"><i class="fas fa-arrow-left"></i></a>
       <img src="php/images/<?php echo $row['img']; ?>" alt="">
@@ -80,7 +80,7 @@
 
 <!-- Footer -->
 <?php
-displayFooter();
+  displayFooter();
 ?>
 
 <script src="javascript/chat.js"></script>

@@ -1,4 +1,7 @@
 <?php
+    /* 
+        - This file for edit a user's info.
+    */
     include("../../includes/mysql_inti.php");
 
     // Get user info from the form

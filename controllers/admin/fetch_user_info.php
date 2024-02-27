@@ -1,4 +1,7 @@
 <?php
+    /* 
+        - This file fetch the user's info.
+    */
     include("../../includes/mysql_inti.php");
 
     if (isset($_POST['id'])) {

@@ -52,6 +52,7 @@ fetch('https://restcountries.com/v3.1/all')
 
 /* ------------------------------------------------------Break Line------------------------------------------------------ */
 
+// Scripts for uploading the files.
 document.getElementById("skillsForm").addEventListener('submit', function (evt) {
     var isValid = true;
 
