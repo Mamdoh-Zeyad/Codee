@@ -156,20 +156,22 @@
 
                                 // Loop through the results
                                 while ($row = mysqli_fetch_assoc($result)) {
-                                    displayRow(
-                                        $counter,
-                                        $row["id"],
-                                        $row["first_name"],
-                                        $row["last_name"],
-                                        $row["birthdate"],
-                                        $row["nationality"],
-                                        $row["email"],
-                                        $row["phone_number"],
-                                        $row["username"],
-                                        $row["role"],
-                                        $row["status"]
-                                    );
-
+                                    if ($_SESSION['role'] === 'Owner' || ($row["role"] !== "Admin" && $row["role"] !== "Owner")) {
+                                        // Display the user's information
+                                        displayRow(
+                                            $counter,
+                                            $row["id"],
+                                            $row["first_name"],
+                                            $row["last_name"],
+                                            $row["birthdate"],
+                                            $row["nationality"],
+                                            $row["email"],
+                                            $row["phone_number"],
+                                            $row["username"],
+                                            $row["role"],
+                                            $row["status"]
+                                        );
+                                    }
                                     $counter++;
                                 }
 

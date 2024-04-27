@@ -42,7 +42,7 @@
         } else {
             // Insert data into the DB
             $sql = "INSERT INTO users (first_name, last_name, birthdate, nationality, email, phone_number, username, password, role, status) VALUES 
-            ('$first_name', '$last_name', '$birthdate', '$nationality', '$email', '$phone_number', '$username', '$hashed_password', '$role', 'Inactive')";
+            ('$first_name', '$last_name', '$birthdate', '$nationality', '$email', '$phone_number', '$username', '$hashed_password', '$role', 'Active')";
 
             // Check if the data inserted or not
             if ($conn->query($sql) === TRUE) {

@@ -29,20 +29,26 @@ function changeLanguage() {
 function executeCode() {
 
     $.ajax({
-
         url: "../controllers/app/compiler.php",
-
         method: "POST",
-
         data: {
             language: $("#languages").val(),
             code: editor.getSession().getValue()
         },
-
         success: function(response) {
-            $(".output").text(response)
+            if (response.startsWith("PHP Parse error:")) {
+                // If response starts with "Error:", display error in red
+                $(".output").html(`<span style="color: red;">${response}</span>`);
+            } else {
+                // Otherwise, display response normally
+                $(".output").text(response);
+            }
+        },
+        error: function(xhr, status, error) {
+            // Display error message if AJAX request fails
+            $(".output").html(`<span style="color: red;">${error}</span>`);
         }
-    })
+    });
 }
 
 const chatInput = document.querySelector(".chat-input textarea");

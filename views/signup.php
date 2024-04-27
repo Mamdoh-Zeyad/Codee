@@ -65,7 +65,8 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="validationCustom02" class="form-label">Join us as<span class="red_star">*</span></label>
+                                        <label for="validationCustom02" class="form-label">Join us as<span class="red_star">*</span> 
+                                        <a data-bs-toggle="modal" class="forget_password" data-bs-target="#UsersInfo" href="#"><i class="fa-solid fa-circle-info"></i></a></label>
                                         <select name="role" class="form-select" id="validationCustom02" required>
                                             <option value="User">User</option>
                                             <option value="Developer">Developer</option>
@@ -103,6 +104,46 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Users Info -->
+<div class="modal fade" id="UsersInfo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header modal_header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">CODEE Terms & Conditions</h1>
+                <button type="button" id="modal_close" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Codee contains three different types of users as the following: 
+                </p>
+                <ul>
+                    <li>
+                        User: you can join us as a user, you don't have to verify your account to get benefits from it,  
+                        you can use it to communicate with other developers or consultants to solve your issue.
+                    </li>
+                    <li>
+                        Developer: you can join us as a certfied dveloper, you have to verfy your account to get benfit from developer featuers like appers to other users, 
+                        and using the development area and get benfit from our IDE and AI chat bot. 
+                    </li>
+                    <li>
+                        Consultant: you can join us as a certified consultant, you have to verify your account 
+                        to provide consultation inside our community, with no other features like IDE or AI chat bot.
+                    </li>
+                </ul>
+                <p>
+                    If you have any questions or concerns about these type of users, please contact us at <a href="mailto:mamdohzx@gmail.com">mamdohzx@gmail.com</a>
+                </p>
+                <p>
+                    Thank you for using Codee!
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="my_btn2" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
